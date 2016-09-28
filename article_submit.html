@@ -2,34 +2,30 @@
     <html>
         <head>
             <title>Submit a Story</title>
+            <link rel="stylesheet" type="text/css" href="article_submit.css">
         </head>
         <body>
-        <!--
-            <?php
-            //check if they're logged in; then if so, start session
-	           
-                session_start();
-	            if( !preg_match('/^[\w_\-]+$/', $usertoshare) ){
-                echo "Invalid username";
-                exit;
-            ?>
-        -->
-        
+                <p>Submit a link to a story</p>
+                <textarea class="link_box" name="big_link_box" form="LinkSubmit">Paste link here...</textarea>
                 <form name="LinkSubmit" action="link_submit.php" method="POST"> 
                     <p>
-                        Title: <input type="text" name="article_title">
-                        Link: <input type="text" name="article_link">
+                        Enter Story Title: <input type="text" name="article_title">
                         <input type="submit" value="Submit Link" />
                     </p>
                 </form>
-                
-                <form name="TextSubmit" action="text_submit.php" method="POST"> 
+
+                <br>
+
+                <p>Or paste in a plaintext story below</p>
+
+                <textarea class="text_box" name="big_text_box" form="TextSubmit">Enter or paste text here... </textarea>
+                <form name="TextSubmit" action="text_submit.php" id=text_form method="POST"> 
                     <p>
-                        Title: <input type="text" name="article_title">
-                        Text: <input type="text" name="article_text">
+                        Enter Story Title: <input type="text" name="article_title">
                         <input type="submit" value="Submit Text" />
                     </p>
                 </form>
+                
             
         </body> 
     </html>

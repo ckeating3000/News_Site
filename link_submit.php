@@ -1,19 +1,19 @@
 <?php
-	// destroy any previous sessions
 	session_start();
-	session_destroy();
 
 	//open mod3 database
 	require database.php
 
+	//list of variables to add to table
 	$link = $_POST['article_link'];
-	
+	$title = $_POST['article_title'];
+	$username=$_SESSION['login'];
 
 	//check to make sure link exists
-	$link_exists=false;
-
 	//adapted from http://stackoverflow.com/questions/2280394/how-can-i-check-if-a-url-exists-via-php
+	$link_exists=false;
 	$file_headers = @get_headers($link);
+	
 	if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {
 	    $link_exists = false;
 	}
@@ -22,16 +22,14 @@
 	}
 	//if link exists, add it to mysql mod3 database
  	if(link_exists){
-		$stmt = $mysqli->prepare("insert into mod3 (link) values (?)");
+		$stmt = $mysqli->prepare("insert into mod3 (link, username, story_title) values (?, ?, ?)");
 		if(!$stmt){
 			printf("Query Prep Failed: %s\n", $mysqli->error);
 			exit;
 		}
 
-		$stmt->bind_param('s', $link);
-		 
+		$stmt->bind_param('sss', $link, $username, $story_title);
 		$stmt->execute();
-		 
 		$stmt->close();
 	}
 ?>
