@@ -1,7 +1,7 @@
 <!DOCTYPE html>
     <html>
         <head>
-            <title>New Stories</title>
+            <title>NewStories</title>
         </head>
         <body>
             
@@ -10,8 +10,9 @@
             </nav>
             <!--sidebar of options-->
             <aside>
-                 <form name="Login" action="login.php" method="POST"> <!--add action to go to page with files-->
+                 <form name="Login" action="loggedin.php" method="POST"> <!--add action to go to page with files-->
                 <p>Username: <input type="text" name="username">
+                Password: <input type="text" name="password">
                     <input type="submit" value="Login" />
                 </p>
             </form>
