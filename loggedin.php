@@ -3,7 +3,7 @@
 	session_start();
     session_destroy();
 	require 'database.php';
-	// compare username to users.txt, then if there's a match, allow user to proceed to person_view page
+	
 	$username=$_POST["username"];
     $password_guess=$_POST["password"];
 	//make sure username is safe
@@ -30,7 +30,6 @@ if( !preg_match('/^[\w_\-]+$/', $password_guess) ){
     if(crypt($password_guess, $password_db)==$password_db){
         session_start();
 		$_SESSION["Login"] = $username_db;
-     
     }
     //send the user to failed login if not a user or allow them to home menu
 //	else{
