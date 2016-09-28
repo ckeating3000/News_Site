@@ -16,12 +16,12 @@
                 </p>
             </form>
             
-            <form name="add_user" action="add_user.php" method="POST">
+            <form name="add_user" action="add_user.html" method="POST">
                  <p>
-                    Register New User: <input type="text" name="newname">
-                    <input type="submit" value="Add new user" />
+                    <input type="submit" value="Join as New User" />
                 </p>
             </form>
+            
             </aside>
         </body>
     </html>

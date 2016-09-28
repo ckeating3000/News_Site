@@ -20,24 +20,23 @@ if( !preg_match('/^[\w_\-]+$/', $new_password) ){
 $password_crypted = crypt($new_password);
 
 //get the username and passwords from the database, make sure they don't already exist
-$check_u_p = $mysqli->prepare("select username, password from users where username like '$new_username' password like '$password_crypted'");
+$check_u_p = $mysqli->prepare("select username, password from users where username like '$new_username' password like '$password_crypted' ");
 if(!$check_u_p){
 	//add username and password to the database
 	$adduser = $mysqli->prepare("insert into users (username, password) values (?, ?)");
-if(!$stmt){
+	if(!$adduser){
 	printf("Query Prep Failed: %s\n", $mysqli->error);
 	exit;
+	}
+	$adduser->bind_param('ss', $new_username, $password_crypted);
+	$adduser->execute();
+	$adduser->close();
+	header("Location: home_page_nologin.php");
+	exit;
 }
- 
-$stmt->bind_param('ss', $new_username, $password_crypted);
- 
-$stmt->execute();
- 
-$stmt->close();
-}
+
 else{
 	echo "Username and password already taken";
-}
-    
+} 
 
 ?>
