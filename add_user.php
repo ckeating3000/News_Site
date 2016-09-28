@@ -1,45 +1,43 @@
 <?php
+//be able to access the database
+require 'database.php';
+
 $new_username = $_POST["newname"];
+$new_password = $_POST["newpass"];
 //check username validity
 if( !preg_match('/^[\w_\-]+$/', $new_username) ){
 	echo "Invalid username";
 	exit;
 }
-//make sure username doesn't already exist
 
-$used_name = false;
-	$h = fopen("/home/ckeating3000/Module2Users/users.txt", "r");
-    //$h = fopen("/home/kharline/Module2Users/users.txt", "r");
-	while(!feof($h)){
-		$line_x = trim(fgets($h));
-		
-		if($line_x==$new_username)
-		{
-			$used_name=True;
-            echo "username already exists";
-            exit;
-		}
-	}
-    
-    if($used_name==false){
-        //make the new user a directory in Module2users
-        
-        //mkdir("/home/kharline/Module2Users/$new_username");
-        mkdir("/home/ckeating3000/Module2Users/$new_username");
-        
-        //add their name to users.txt file (code adapted from http://www.dynamicdrive.com/forums/showthread.php?4539-how-do-i-modify-existing-txt-files-with-php)
-        
-        //$f = "/home/kharline/Module2Users/users.txt";
-        $f = "/home/ckeating3000/Module2Users/users.txt";
-        
-        $file = fopen($f, "a+");
-        $string = "\n" . $new_username;
-        fwrite($file, $string);
-        fclose($file);
-        //send them back to the login page
-        header("Location: login.html");
-        exit;
-    }
+//check password validity
+if( !preg_match('/^[\w_\-]+$/', $new_password) ){
+	echo "Invalid password";
+	exit;
+}
+
+//run salting and hash on the password
+$password_crypted = crypt($new_password);
+
+//get the username and passwords from the database, make sure they don't already exist
+$check_u_p = $mysqli->prepare("select username, password from users where username like '$new_username' password like '$password_crypted'");
+if(!$check_u_p){
+	//add username and password to the database
+	$adduser = $mysqli->prepare("insert into users (username, password) values (?, ?)");
+if(!$stmt){
+	printf("Query Prep Failed: %s\n", $mysqli->error);
+	exit;
+}
+ 
+$stmt->bind_param('ss', $new_username, $password_crypted);
+ 
+$stmt->execute();
+ 
+$stmt->close();
+}
+else{
+	echo "Username and password already taken";
+}
     
 
 ?>
