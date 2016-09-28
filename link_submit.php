@@ -22,13 +22,13 @@
 	}
 	//if link exists, add it to mysql mod3 database
  	if(link_exists){
-		$stmt = $mysqli->prepare("insert into link (article_link) values (?)");
+		$stmt = $mysqli->prepare("insert into mod3 (link) values (?)");
 		if(!$stmt){
 			printf("Query Prep Failed: %s\n", $mysqli->error);
 			exit;
 		}
 
-		$stmt->bind_param('sss', $first, $last, $dept);
+		$stmt->bind_param('s', $link);
 		 
 		$stmt->execute();
 		 
