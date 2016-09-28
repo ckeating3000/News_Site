@@ -1,7 +1,5 @@
 <?php
-	// destroy any previous sessions
 	session_start();
-	session_destroy();
 
 	//open mod3 database
 	require database.php
