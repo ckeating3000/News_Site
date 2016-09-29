@@ -24,5 +24,34 @@
             </form>
             
             </aside>
+            <div id="content">
+                
+                <?php
+                //display a list of articles
+                require 'database_r.php';
+                $get_stories = $mysqli->prepare("select link, story_text, username, story_title from stories order by story_id");
+                if(!$get_stories){
+                    printf("Query Prep Failed: %s\n", $mysqli->error);
+                    exit;
+                }
+                 
+                $get_stories->execute();
+                 
+                $get_stories->bind_result($link, $text, $username, $title);
+                 
+                echo "<ul>\n";
+                while($get_stories->fetch()){
+                    printf("\t<li> <a href='%s'>%s</a> <br> %s <br> %s</li>\n",
+                        htmlspecialchars($link),
+                        htmlspecialchars($title),
+                        htmlspecialchars($text), 
+                        "Posted by: ".htmlspecialchars($username)
+                    );
+                }
+                echo "</ul>\n";
+                 
+                $get_stories->close();
+                ?>
+            </div>
         </body>
     </html>

@@ -2,12 +2,12 @@
 	session_start();
 
 	//open mod3 database
-	require database.php
+	require 'database_rw.php';
 
 	//list of variables to add to table
-	$link = $_POST['article_link'];
-	$title = $_POST['article_title'];
-	$username=$_SESSION['login'];
+	$link = $_POST["big_link_box"];
+	$title = $_POST["article_title"];
+	$username=$_SESSION["Login"];
 
 	//check to make sure link exists
 	//adapted from http://stackoverflow.com/questions/2280394/how-can-i-check-if-a-url-exists-via-php
@@ -21,7 +21,7 @@
 	    $link_exists = true;
 	}
 	//if link exists, add it to mysql mod3 database
- 	if(link_exists){
+ 	if($link_exists){
 		$stmt = $mysqli->prepare("insert into mod3 (link, username, story_title) values (?, ?, ?)");
 		if(!$stmt){
 			printf("Query Prep Failed: %s\n", $mysqli->error);

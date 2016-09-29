@@ -2,12 +2,12 @@
 	session_start();
 
 	//open mod3 database
-	require database.php
+	require 'database_rw.php';
 
 	//list of variables to add to table
-	$article=$_POST['article_submit'];
-	$title=$_POST['article_title'];
-	$username=$_SESSION['login'];
+	$article=$_POST["big_text_box"];
+	$title=$_POST["article_title"];
+	$username=$_SESSION["Login"];
 
 	//check to make sure article text contains no funny characters
 	if( !preg_match('/^[\w_\-]+$/', $article) ){
