@@ -5,8 +5,8 @@
 	require 'database_rw.php';
 
 	//list of variables to add to table
-	$article=$_POST["big_text_box"];
-	$title=$_POST["article_title"];
+	$text=$_POST["comment_submit"];
+    $story_id=$_SESSION["story_id"];
 	$username=$_SESSION["Login"];
 
 	//check to make sure article text contains no funny characters
@@ -15,17 +15,19 @@
 		exit;
 	}
 	
-	//if article text is valid, add it to mysql mod3 database
-	$stmt = $mysqli->prepare("insert into stories (story_text, username, story_title) values (?, ?, ?)");
+	//if article text is valid, add it to mysql table
+	$stmt = $mysqli->prepare("insert into comments (text, username, story_id) values (?, ?, ?)");
 	if(!$stmt){
 		printf("Query Prep Failed: %s\n", $mysqli->error);
 		exit;
 	}
 
-	$stmt->bind_param('sss', $article, $username, $story_title);
+	$stmt->bind_param('ssi', $test, $username, $story_id);
 	$stmt->execute();
 	$stmt->close();
-	//once this is working, reroute to the home page so they can see their article
-	//Header("Location: home_page_login.php");
-	//exit;
+    
+//    reroute to home page once working 
+//    Header("Location: home_page_login.php");
+//	exit;
+	
 ?>

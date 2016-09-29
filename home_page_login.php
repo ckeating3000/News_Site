@@ -29,7 +29,7 @@
 			   
                 //display a list of articles
                 require 'database_r.php';
-                $get_stories = $mysqli->prepare("select link, story_text, username, story_title from stories order by story_id");
+                $get_stories = $mysqli->prepare("select link, story_text, username, story_title, story_id from stories order by story_id");
                 if(!$get_stories){
                     printf("Query Prep Failed: %s\n", $mysqli->error);
                     exit;
@@ -37,17 +37,21 @@
                  
                 $get_stories->execute();
                  
-                $get_stories->bind_result($link, $text, $username, $title);
+                $get_stories->bind_result($link, $text, $username, $title, $id);
                  
                 echo "<ul>\n";
                 while($get_stories->fetch()){
-                    printf("\t<li> <a href='%s'>%s</a> <br> %s <br> %s</li>\n",
+                    printf("\t<li> <a href='%s'>%s</a> <br> %s <br> %s <a href='post_comment.php?name=$id'>Comment on this Post</a></li>\n",
                         htmlspecialchars($link),
                         htmlspecialchars($title),
                         htmlspecialchars($text), 
                         "Posted by: ".htmlspecialchars($username)
                     );
-					"<a href='comment.php'>Comment on this Post</a>";
+					//echo "<a href='comment.php?name=$title'>Comment on this Post</a>";
+					//allow the person to delete posts that are their own
+					//if($username==$_SESSION["Login"]){
+					//	echo "<a href='delete.php?name=$title'>Delete this Post</a>";
+					//}
                 }
                 echo "</ul>\n";
                  

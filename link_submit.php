@@ -22,7 +22,7 @@
 	}
 	//if link exists, add it to mysql mod3 database
  	if($link_exists){
-		$stmt = $mysqli->prepare("insert into mod3 (link, username, story_title) values (?, ?, ?)");
+		$stmt = $mysqli->prepare("insert into stories (link, username, story_title) values (?, ?, ?)");
 		if(!$stmt){
 			printf("Query Prep Failed: %s\n", $mysqli->error);
 			exit;
