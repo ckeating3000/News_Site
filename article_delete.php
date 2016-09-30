@@ -28,7 +28,7 @@ $sql = "SELECT * FROM stories";
     if(!empty($_REQUEST['checkboxstatus'])) {
         $checked_values = $_REQUEST['checkboxstatus'];
         foreach($checked_values as $val) {
-            $sqldel = "DELETE from stories WHERE story_id = '$val'";
+            $sqldel = "DELETE from  WHERE story_id = '$val'";
            mysql_query($sqldel);
 
         }
