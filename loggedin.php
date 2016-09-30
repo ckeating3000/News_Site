@@ -27,16 +27,21 @@ if( !preg_match('/^[\w_\-]+$/', $password_guess) ){
     
     $check_u_p->bind_result($username_db, $password_db);
     $check_u_p->fetch();
-    if(crypt($password_guess, $password_db)==$password_db){
+
+    if($username != $username_db){
+        echo "Invalid username";
+        exit;
+    }
+    if(password_verify($password_guess, $password_db)==$password_db){
         session_start();
 		$_SESSION["Login"] = $username_db;
     }
     //send the user to failed login if not a user or allow them to home menu
-//	else{
-//        session_destroy();
-//		Header("Location: failed_login.html");
-//		exit;
-//	}
+	else{
+       session_destroy();
+		Header("Location: failed_login.html");
+		exit;
+	}
     if(isset($_SESSION["Login"])){
            Header("Location: home_page_login.php");
             exit;

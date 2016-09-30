@@ -13,7 +13,7 @@
             <aside>
                 <form name="Login" action="loggedin.php" method="POST"> <!--add action to go to page with files-->
                     <p>Username: <input type="text" name="username">
-                        Password: <input type="text" name="password">
+                        Password: <input type="password" name="password">
                         <input type="submit" value="Login" />
                     </p>
                 </form>

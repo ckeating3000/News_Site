@@ -17,6 +17,8 @@
 	
 	if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {
 	    $link_exists = false;
+	    //redirect to error page
+		header("Location: link_nonexist_error.html");
 	}
 	else {
 	    $link_exists = true;
@@ -26,10 +28,15 @@
 		$stmt = $mysqli->prepare("insert into stories (link, username, story_title) values (?, ?, ?)");
 		if(!$stmt){
 			printf("Query Prep Failed: %s\n", $mysqli->error);
+			 //redirect to error page
+			header("Location: link_nonexist_error.html");
 			exit;
 		}
 		$stmt->bind_param('sss', $link, $username, $story_title);
 		$stmt->execute();
 		$stmt->close();
+		//redirect to homepage
+		header("Location: home_page_login.php");
 	}
+	
 ?>

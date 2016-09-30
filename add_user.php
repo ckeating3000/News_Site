@@ -16,8 +16,8 @@ if( !preg_match('/^[\w_\-]+$/', $new_password) ){
 	exit;
 }
 
-//run salting and hash on the password
-$password_crypted = crypt($new_password);
+//run salting and hash on the password.  Use password_hash instead of crypt because the former automatically generates a salt
+$password_crypted = password_hash($new_password);
 
 //get the username and passwords from the database, make sure they don't already exist
 $check_u_p = $mysqli->prepare("select username, password from users where username like '$new_username' password like '$password_crypted' ");
