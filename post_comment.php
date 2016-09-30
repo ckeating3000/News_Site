@@ -7,6 +7,10 @@
         <body>
             <?php
             session_start();
+            if(!isset($_SESSION['Login'])){
+				Header("Location: home_page_nologin.php");
+				exit;
+			   }
             $story_id = $_GET["name"];
 
              require 'database_r.php';

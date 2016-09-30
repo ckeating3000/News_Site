@@ -57,7 +57,6 @@
 						htmlentities($id),
 						htmlentities($id)
                     );
-					//echo "<a href='comment.php?name=$title'>Comment on this Post</a>";
 					//allow the person to delete posts that are their own
 					//if($username==$_SESSION["Login"]){
 					//	echo "<a href='delete.php?name=$title'>Delete this Post</a>";

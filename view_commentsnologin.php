@@ -9,20 +9,17 @@
 			</p>
             <nav>
                 <!--users that are logged in should be able to: post new articles, logout, -->
-				
+				You must Login to post your own comments
 			   <form name="return" action="home_page_login.php" method="post"> 
 			   <input type="submit" value="Return to Home Page"/>
-				</form>
+			   </form>
 				
             </nav>
             <!--sidebar of options-->
         
                <?php
 			   session_start();
-				 if(!isset($_SESSION['Login'])){
-				Header("Location: view_commentsnologin.php");
-				exit;
-			   }
+			
                 $story_id = $_GET["name"];
                require 'database_r.php';
 			   echo "<br> <br> <br>";
@@ -59,11 +56,9 @@
                 echo "<ul>\n";
                 while($get_stories->fetch()){
                     printf("\t<li> %s said: %s <br> 
-						   <a href='post_comment.php?name=%u'>Add a comment</a>
 						   </li><br>\n",
                         htmlspecialchars($username),
-                        htmlspecialchars($comment),
-                        htmlspecialchars($id)
+                        htmlspecialchars($comment)
                     );
 					//echo "<a href='comment.php?name=$title'>Comment on this Post</a>";
 					//allow the person to delete posts that are their own
