@@ -25,14 +25,15 @@
                <?php
 			   session_start();
 			   if(!isset($_SESSION['Login'])){
-				echo "You do not have access to this content";
+				Header("Location: home_page_nologin.php");
+				exit;
 			   }
 			   echo "<br> <br> <br>";
 			   echo "Welcome ".$_SESSION["Login"]."!";
 			   
                 //display a list of articles
                 require 'database_r.php';
-                $get_stories = $mysqli->prepare("select link, story_text, username, story_title, story_id from stories order by story_id");
+                $get_stories = $mysqli->prepare("select link, story_text, username, story_title, story_id, comment_count from stories order by story_id");
                 if(!$get_stories){
                     printf("Query Prep Failed: %s\n", $mysqli->error);
                     exit;
@@ -40,18 +41,21 @@
                  
                 $get_stories->execute();
                  
-                $get_stories->bind_result($link, $text, $username, $title, $id);
+                $get_stories->bind_result($link, $text, $username, $title, $id, $comcount);
                  
                 echo "<ul>\n";
                 while($get_stories->fetch()){
-                    printf("\t<li> <a href='%s'>%s</a> <br> %s <br> %s <br>
-						   <a href='view_comments.php?name=$id'>View Comment Posts</a> <br>
-						   <a href='post_comment.php?name=$id'>Comment on this Post</a>
+                    printf("\t<li> <a href='%s'>%s</a> <br> %s <br> %s <br> %s
+						   <a href='view_comments.php?name=%u'>comments</a> on this post<br>
+						   <a href='post_comment.php?name=%u'>Add a comment</a>
 						   </li><br>\n",
                         htmlspecialchars($link),
                         htmlspecialchars($title),
                         htmlspecialchars($text), 
-                        "Posted by: ".htmlspecialchars($username)
+                        "Posted by: ".htmlspecialchars($username),
+						"There are ".htmlspecialchars($comcount),
+						htmlentities($id),
+						htmlentities($id)
                     );
 					//echo "<a href='comment.php?name=$title'>Comment on this Post</a>";
 					//allow the person to delete posts that are their own

@@ -25,6 +25,29 @@
 	$stmt->bind_param('ssi', $text, $username, $story_id);
 	$stmt->execute();
 	$stmt->close();
+	//get the number of comments before comment added
+	$get_comcount = $mysqli->prepare("select comment_count from stories where story_id=?");
+	if(!$get_comcount){
+		printf("Query Prep Failed: %s\n", $mysqli->error);
+		exit;
+	}
+	$get_comcount_comcount->bind_param('i', $story_id);
+	$get_comcount->execute();
+	$get_comcount->bind_result($numcomments);
+	$get_comcount->close();
+	//increase the comment count
+	$numcomments = $numcomments +1;
+    
+	//increase the comment count in the stories table
+	$increase_comcount = $mysqli->prepare("insert into stories (comment_count) values (?)");
+	if(!$increase_comcount){
+		printf("Query Prep Failed: %s\n", $mysqli->error);
+		exit;
+	}
+	
+	$increase_comcount->bind_param('i', $numcomments);
+	$increase_comcount->execute();
+	$increase_comcount->close();
     
 //    reroute to home page once working 
     Header("Location: home_page_login.php");

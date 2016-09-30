@@ -31,7 +31,7 @@
                 <?php
                 //display a list of articles
                 require 'database_r.php';
-                $get_stories = $mysqli->prepare("select link, story_text, username, story_title from stories order by story_id");
+                $get_stories = $mysqli->prepare("select link, story_text, username, story_title, story_id, comment_count from stories order by story_id");
                 if(!$get_stories){
                     printf("Query Prep Failed: %s\n", $mysqli->error);
                     exit;
@@ -39,15 +39,19 @@
                  
                 $get_stories->execute();
                 
-                $get_stories->bind_result($link, $text, $username, $title);
+                $get_stories->bind_result($link, $text, $username, $title, $id, $comcount);
                  
                 echo "<ul>\n";
                 while($get_stories->fetch()){
-                    printf("\t<li> <a href='%s'>%s</a> <br> %s <br> %s</li>\n",
+                        printf("\t<li> <a href='%s'>%s</a> <br> %s <br> %s <br> %s
+						   <a href='view_comments.php?name=%u'>comments</a> on this post<br>
+						   </li><br>\n",
                         htmlspecialchars($link),
                         htmlspecialchars($title),
                         htmlspecialchars($text), 
-                        "Posted by: ".htmlspecialchars($username)
+                        "Posted by: ".htmlspecialchars($username),
+						"There are ".htmlspecialchars($comcount),
+						htmlentities($id)
                     );
                 }
                 echo "</ul>\n";
