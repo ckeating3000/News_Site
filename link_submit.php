@@ -28,7 +28,6 @@
 			printf("Query Prep Failed: %s\n", $mysqli->error);
 			exit;
 		}
-
 		$stmt->bind_param('sss', $link, $username, $story_title);
 		$stmt->execute();
 		$stmt->close();

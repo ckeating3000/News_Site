@@ -36,7 +36,7 @@
 	$get_comcount->bind_result($numcomments);
 	$get_comcount->close();
 	//increase the comment count
-	$numcomments = $numcomments +1;
+	++$numcomments;
     
 	//increase the comment count in the stories table
 	$increase_comcount = $mysqli->prepare("insert into stories (comment_count) values (?)");
