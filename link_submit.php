@@ -5,7 +5,7 @@
 	require 'database_rw.php';
 
 	//list of variables to add to table
-	$link = $_POST["big_link_box"];
+	$link = $_POST["link_submit"];
 	$title = $_POST["article_title"];
 	$username=$_SESSION["Login"];
 
