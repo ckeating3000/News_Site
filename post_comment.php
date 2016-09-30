@@ -6,9 +6,11 @@
         </head>
         <body>
             <?php
+            session_start();
             $story_id = $_GET["name"];
+
              require 'database_r.php';
-                $get_stories = $mysqli->prepare("select link, story_text, username, story_title, story_id from stories where story_id=?");
+                $get_stories = $mysqli->prepare("select story_text, username, story_title from stories where story_id=?");
                 if(!$get_stories){
                     printf("Query Prep Failed: %s\n", $mysqli->error);
                     exit;
@@ -16,14 +18,14 @@
                 $get_stories->bind_param('i', $story_id);
                 $get_stories->execute();
                  
-                $get_stories->bind_result($link, $text, $username, $title, $story_id);
-                 
-                    printf("\t<li> <a href='%s'>%s</a> <br> %s <br> %s</li>\n",
-                        htmlspecialchars($link),
+                $get_stories->bind_result($text, $username, $title);
+                 echo "<ul>\n";
+                    printf("\t<li> %s <br> %s <br> %s</li>\n",
                         htmlspecialchars($title),
                         htmlspecialchars($text), 
                         "Posted by: ".htmlspecialchars($username)
                     );
+                    echo "</ul>\n";
                     //STORE THE story id as a session variable so the user can reference it
                 $_SESSION["story_id"]=$story_id;
                  
@@ -32,8 +34,9 @@
 
                 <p>Post your comments below</p>
 
-                <textarea class="text_box" name="comment_submit" form="CommentSubmit">Enter or paste text here... </textarea>
-                <form name="CommentSubmit" action="comment_submit.php" id=text_form method="POST"> 
+                
+                <form name="CommentSubmit" action="comment_submit.php" id=text_form method="POST">
+                    <textarea class="text_box" name="comment_submit" >Enter or paste text here... </textarea>
                     <p>
                         <input type="submit" value="Submit Comment" />
                     </p>
