@@ -6,6 +6,7 @@
 
 	//list of variables to add to table
 	$link = $_POST["link_submit"];
+	$comment = $_POST["comment_submit"];
 	$title = $_POST["article_title"];
 	$username=$_SESSION["Login"];
 

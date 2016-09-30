@@ -31,7 +31,7 @@
 		printf("Query Prep Failed: %s\n", $mysqli->error);
 		exit;
 	}
-	$get_comcount_comcount->bind_param('i', $story_id);
+	$get_comcount->bind_param('i', $story_id);
 	$get_comcount->execute();
 	$get_comcount->bind_result($numcomments);
 	$get_comcount->close();
