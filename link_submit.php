@@ -25,14 +25,14 @@
 	}
 	//if link exists, add it to mysql mod3 database
  	if($link_exists){
-		$stmt = $mysqli->prepare("insert into stories (link, username, story_title) values (?, ?, ?)");
+		$stmt = $mysqli->prepare("insert into stories (link, username, story_title, story_text) values (?, ?, ?, ?)");
 		if(!$stmt){
 			printf("Query Prep Failed: %s\n", $mysqli->error);
 			 //redirect to error page
 			header("Location: link_nonexist_error.html");
 			exit;
 		}
-		$stmt->bind_param('sss', $link, $username, $story_title);
+		$stmt->bind_param('ssss', htmlspecialchars($link), $username, $title, $comment);
 		$stmt->execute();
 		$stmt->close();
 		//redirect to homepage

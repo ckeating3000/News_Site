@@ -10,10 +10,10 @@
 	$username=$_SESSION["Login"];
 
 	//check to make sure article text contains no funny characters
-	if( !preg_match('/^[\w_\-]+$/', $text) ){
-		echo "Invalid article text; remove special characters";
-		exit;
-	}
+	//if( !preg_match('/^[\w_\-]+$/', $text) ){
+	//	echo "Invalid article text; remove special characters";
+	//	exit;
+	//}
 	
 	//if article text is valid, add it to mysql table
 	$stmt = $mysqli->prepare("insert into comments (comment, username, story_id) values (?, ?, ?)");
@@ -39,13 +39,13 @@
 	++$numcomments;
     
 	//increase the comment count in the stories table
-	$increase_comcount = $mysqli->prepare("insert into stories (comment_count) values (?)");
+	$increase_comcount = $mysqli->prepare("update stories set comment_count=? where story_id=?");
 	if(!$increase_comcount){
 		printf("Query Prep Failed: %s\n", $mysqli->error);
 		exit;
 	}
 	
-	$increase_comcount->bind_param('i', $numcomments);
+	$increase_comcount->bind_param('ii', $numcomments, $story_id);
 	$increase_comcount->execute();
 	$increase_comcount->close();
     

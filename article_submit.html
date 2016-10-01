@@ -1,35 +1,30 @@
 <!DOCTYPE html>
     <html>
         <head>
-            <title>Submit a Story</title>
+            <title>New Story Form</title>
             <link rel="stylesheet" type="text/css" href="article_submit.css">
         </head>
         <body>
-                <p>Submit a link to a story</p>
-                
+            <div>
+                <strong>Share your story below!</strong>
+            </div>
                 <form name="LinkSubmit" action="link_submit.php" method="POST"> 
                     <p>
-                        Enter Title/Header: <input type="text" name="article_title">
-                        Enter Link: <input type="text" name="link_submit">   
-                        Enter Comment: <input type="text" name="comment_submit">
+                        Post title: <input type="text" name="article_title">
+                    </p>
+                    <p>
+                         Story link: <input type="text" name="link_submit">
+                    </p>
+                          <p>
+                            Your reaction:
+                          </p>
+                        
+                        <textarea class="text_box" name="comment_submit" >Why is this news to you... </textarea>
+                        <p>
                         <input type="submit" value="Submit Link" />
                     </p>
                 </form>
 
                 <br>
-
-<!-- Looks like we don't need this since users only need to be able to post links with a header/title
-
-                <p>Or paste in a plaintext story below</p>
-
-                <textarea class="text_box" name="article_submit" form="TextSubmit">Enter or paste text here... </textarea>
-                <form name="TextSubmit" action="text_submit.php" id=text_form method="POST"> 
-                    <p>
-                        Enter Story Title: <input type="text" name="article_title">
-                        <input type="submit" value="Submit Text" />
-                    </p>
-                </form>
-                -->
-            
         </body> 
     </html>
