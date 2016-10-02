@@ -13,7 +13,7 @@
 			   <form name="postArticle" action="article_submit.html" method="post"> 
 			   <input type="submit" value="Create a New Post"/>
 				</form>
-				<form name="deleteArticle" action="article_delete.php" method="post"> 
+				<form name="deleteArticle" action="delete_comments_posts.php" method="post"> 
 			   <input type="submit" value="Delete A Post"/>
 				</form>
 				<form name="logout" action="logout.php" method="post"> 

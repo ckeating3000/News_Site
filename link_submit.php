@@ -29,7 +29,7 @@
 		if(!$stmt){
 			printf("Query Prep Failed: %s\n", $mysqli->error);
 			 //redirect to error page
-			header("Location: link_nonexist_error.html");
+			header("Location: link_upload_error.html");
 			exit;
 		}
 		$stmt->bind_param('ssss', htmlspecialchars($link), $username, $title, $comment);
