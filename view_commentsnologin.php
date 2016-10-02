@@ -9,8 +9,8 @@
 			</p>
             <nav>
                 <!--users that are logged in should be able to: post new articles, logout, -->
-				You must Login to post your own comments
-			   <form name="return" action="home_page_login.php" method="post"> 
+				
+			   <form name="return" action="home_page_nologin.php" method="post"> 
 			   <input type="submit" value="Return to Home Page"/>
 			   </form>
 				
@@ -24,16 +24,17 @@
                require 'database_r.php';
 			   echo "<br> <br> <br>";
                //display the article
-                $get_story = $mysqli->prepare("select link, story_text, username, story_title, story_id from stories where story_id=?");
+                $get_story = $mysqli->prepare("select link, story_text, username, story_title from stories where story_id=?");
                 if(!$get_story){
                     printf("Query Prep Failed: %s\n", $mysqli->error);
                     exit;
                 }
                 $get_story->bind_param('i', $story_id);
                 $get_story->execute();
-                $get_story->bind_result($link, $text, $username, $title, $id);
-                printf("\t<li> <a href='%s'>%s</a> <br> %s <br> %s <br>
-						   </li><br>\n",
+                $get_story->bind_result($link, $text, $username, $title);
+				$get_story->fetch();
+                printf("\t<a href='%s'>%s</a> <br> %s <br> %s <br>
+						   <br>\n",
                         htmlspecialchars($link),
                         htmlspecialchars($title),
                         htmlspecialchars($text), 
@@ -43,12 +44,12 @@
                  
                 //display a list of comments
                 
-                $get_stories = $mysqli->prepare("select username, comment, story_id from comments where story_id='id'");
+                $get_stories = $mysqli->prepare("select username, comment, story_id from comments where story_id=?");
                 if(!$get_stories){
                     printf("Query Prep Failed: %s\n", $mysqli->error);
                     exit;
                 }
-                 
+                $get_stories->bind_param('i', $story_id);
                 $get_stories->execute();
                  
                 $get_stories->bind_result($username, $comment, $id);
@@ -73,5 +74,9 @@
                 //destroy the session after someone hits the logout button, send them back to the login screen
                 
                 ?>
+				<p>
+					<br>
+					You must Login to post your own comments
+				</p>
         </body>
     </html>

@@ -9,7 +9,7 @@
 	// adapted from http://www.w3schools.com/php/php_mysql_delete.asp
 
 	//first delete all comments associated with that article
-	$delete_comments = "delete from comments where story_id=$id";
+	$delete_comments = "delete from comments where story_id='$id'";
 	if ($mysqli->query($delete_comments) === TRUE) {
 		echo "Deleted comments:";
 	}
@@ -19,7 +19,7 @@
 	//then delete specified row from database
 	$delete_post = "delete from stories where story_id='$id'";
 	if ($mysqli->query($delete_post) === TRUE) {
-		header("Location: delete_comments_posts.php");
+		header("Location: home_page_login.php");
 	}
 	else {
 		echo "Error deleting post";
