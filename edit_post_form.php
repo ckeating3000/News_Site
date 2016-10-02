@@ -7,10 +7,7 @@
             <div>
                 <strong>Edit your post</strong>
             </div>
-                <form name="EditPost" action="edit_post.php" method="POST"> 
-                    <p>
-                        Post title: <input type="text" name="article_title">
-                    </p>
+                <form action="edit_post.php" method="POST"> 
                     <p>
                          Story link: <input type="text" name="link_submit">
                     </p>
@@ -20,7 +17,9 @@
                         
                         <textarea class="text_box" name="comment_submit" >Why is this news to you... </textarea>
                         <p>
+                        <input type="hidden" value="<?php echo $_GET['name']; ?>" name="id" />
                         <input type="submit" value="Submit Link" />
+
                     </p>
                 </form>
 
