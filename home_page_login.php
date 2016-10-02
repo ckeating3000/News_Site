@@ -9,8 +9,10 @@
 			</p>
             <nav>
                 <!--users that are logged in should be able to: post new articles, logout, -->
-				
-			   <form name="postArticle" action="article_submit.html" method="post"> 
+				<form name="view_prof" action="view_profile.php" method="post"> 
+			   <input type="submit" value="View Your Profile"/>
+				</form>
+			   <form name="postArticle" action="article_submit.html" method="post">
 			   <input type="submit" value="Create a New Post"/>
 				</form>
 				<form name="deleteArticle" action="delete_comments_posts.php" method="post"> 
@@ -22,6 +24,7 @@
 				<form name="logout" action="logout.php" method="post"> 
 			   <input type="submit" value="Logout"/>
 				</form>
+				
             </nav>
             <!--sidebar of options-->
         
