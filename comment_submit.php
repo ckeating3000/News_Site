@@ -50,6 +50,6 @@
 	$increase_comcount->close();
     
 //reroute to home page once working 
-    //header("Location: post_comment.php");
-	//exit;
+    header("Location: home_page_login.php");
+	exit;
 	
