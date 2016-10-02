@@ -4,9 +4,17 @@
 	//open mod3 database
 	require 'database_rw.php';
 
-	//check for valid token created when user logs in
-	if($_SESSION['token'] !== $_POST['token']){
-		die("Request forgery detected");
+	//check for tokens
+	if(isset($_GET['token'])){
+		if($_SESSION['token'] !== $_GET['token']){
+			die("Request forgery detected");
+		}
+	}
+
+	if(isset($_POST['token'])){
+		if($_SESSION['token'] !== $_POST['token']){
+			die("Request forgery detected");
+		}
 	}
 
 	//check for login

@@ -42,14 +42,15 @@
 
             while($get_posts->fetch()){
                 printf("\t<li> <a href='%s'>%s</a> <br> %s <br> %s <br> %s
-					   <a href='edit_post_form.php?name=%s'>edit this post</a>
+					   <a href='edit_post_form.php?name=%s&token=%s'>edit this post</a>
 					   </li><br>\n",
                     htmlspecialchars($link),
                     htmlspecialchars($title),
                     htmlspecialchars($text),
                     "Posted by: ".htmlspecialchars($username),
 					htmlentities($id),
-					htmlentities($id)
+					htmlentities($id),
+                    $_SESSION["token"]
                 );
             }
             echo "</ul>\n";
