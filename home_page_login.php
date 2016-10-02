@@ -16,6 +16,9 @@
 				<form name="deleteArticle" action="delete_comments_posts.php" method="post"> 
 			   <input type="submit" value="Delete A Post or Comment"/>
 				</form>
+                <form name="editArticle" action="edit_posts_comments.php" method="post"> 
+               <input type="submit" value="Edit A Post or Comment"/>
+                </form>
 				<form name="logout" action="logout.php" method="post"> 
 			   <input type="submit" value="Logout"/>
 				</form>
