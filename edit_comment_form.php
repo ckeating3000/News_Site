@@ -9,9 +9,6 @@
                 <strong>Edit your comment</strong>
             </div>
                 <form action="edit_comment.php" method="POST"> 
-                    <p>
-                         Comment <input type="text" name="comment">
-                    </p>
                         
                     <textarea class="text_box" name="comment_submit" >Enter your insightful comment </textarea>
                     <p>

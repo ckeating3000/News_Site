@@ -69,7 +69,7 @@
 
             while($get_comments->fetch()){
                 printf("\t<li> %s <br>
-                       <a href='edit_comment.php?name=%s'>edit this comment</a>
+                       <a href='edit_comment_form.php?name=%s'>edit this comment</a>
                        </li><br>\n",
                     htmlspecialchars($comment),
                     htmlspecialchars($comment_id)
