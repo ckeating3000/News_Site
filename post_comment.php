@@ -19,7 +19,7 @@
     			   }
                 $story_id = $_GET["name"];
     			//STORE THE story id as a session variable so we can reference it in comment_submit.php
-    			$_SESSION["story_id"]=$story_id;
+    			//$_SESSION["story_id"]=$story_id;
 
                 require 'database_rw.php';
     			
