@@ -17,7 +17,7 @@
 		echo "Error deleting comments:";
 	}
 	//then delete specified row from database
-	$delete_post = "delete from stories where story_id=$id";
+	$delete_post = "delete from stories where story_id='$id'";
 	if ($mysqli->query($delete_post) === TRUE) {
 		header("Location: delete_comments_posts.php");
 	}

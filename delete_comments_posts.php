@@ -26,17 +26,16 @@
 
 		    echo "<br>\n<br>\n";
 		   
-            //display a list of user's posts and comments
+        //DISPLAY/DELETE POSTS
             $username = $_SESSION['Login'];
             require 'database_rw.php';
+            
             $get_posts = $mysqli->prepare("select link, story_text, username, story_title, story_id, comment_count from stories where username='$username' order by story_id");
             if(!$get_posts){
                 printf("Query Prep Failed: %s\n", $mysqli->error);
                 exit;
             }
-            
             $get_posts->execute();
-            
             $get_posts->bind_result($link, $text, $username, $title, $id, $comcount);
             
             echo "<ul>\n";
@@ -59,8 +58,30 @@
 				//}
             }
             echo "</ul>\n";
-            
             $get_posts->close();
+
+        //DISPLAY/DELETE COMMENTS
+
+            $get_comments = $mysqli->prepare("select comment, story_id, username, comment_id from comments where username='$username' order by story_id");
+            if(!$get_comments){
+                printf("Query Prep Failed: %s\n", $mysqli->error);
+                exit;
+            }
+            $get_comments->execute();
+            $get_comments->bind_result($comment, $story_id, $username, $comment_id);
+            
+            echo "<ul>\n";
+
+            while($get_comments->fetch()){
+                printf("\t<li> %s <br>
+                       <a href='delete_comment.php?name=%s'>delete this comment</a>
+                       </li><br>\n",
+                    htmlspecialchars($comment),
+                    htmlspecialchars($comment_id)
+                );
+            }
+            echo "</ul>\n";
+            $get_comments->close();
             
             //destroy the session after someone hits the logout button, send them back to the login screen
             

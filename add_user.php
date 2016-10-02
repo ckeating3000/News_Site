@@ -25,8 +25,8 @@ if(!$check_u_p){
 	//add username and password to the database
 	$adduser = $mysqli->prepare("insert into users (username, password) values (?, ?)");
 	if(!$adduser){
-	printf("Query Prep Failed: %s\n", $mysqli->error);
-	exit;
+		printf("Query Prep Failed: %s\n", $mysqli->error);
+		exit;
 	}
 	$adduser->bind_param('ss', $new_username, $password_crypted);
 	$adduser->execute();

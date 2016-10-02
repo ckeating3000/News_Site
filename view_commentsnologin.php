@@ -43,7 +43,7 @@
                  
                 //display a list of comments
                 
-                $get_stories = $mysqli->prepare("select username, comment, story_id from comments");
+                $get_stories = $mysqli->prepare("select username, comment, story_id from comments where story_id='id'");
                 if(!$get_stories){
                     printf("Query Prep Failed: %s\n", $mysqli->error);
                     exit;

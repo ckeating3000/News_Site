@@ -50,7 +50,7 @@
 	$increase_comcount->close();
     
 //    reroute to home page once working 
-    Header("Location: home_page_login.php");
-	exit;
+    //Header("Location: home_page_login.php");
+	//exit;
 	
 ?>
