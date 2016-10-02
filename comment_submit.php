@@ -6,23 +6,22 @@
 
 	//list of variables to add to table
 	$text=$_POST["comment_submit"];
-    $story_id=$_SESSION["story_id"];
 	$username=$_SESSION["Login"];
-
+	echo "beginning";
 	//check to make sure article text contains no funny characters
 	//if( !preg_match('/^[\w_\-]+$/', $text) ){
 	//	echo "Invalid article text; remove special characters";
 	//	exit;
 	//}
-	
-	//if article text is valid, add it to mysql table
+
+	//if comment text is valid, add it to mysql table
 	$stmt = $mysqli->prepare("insert into comments (comment, username, story_id) values (?, ?, ?)");
 	if(!$stmt){
 		printf("Query Prep Failed: %s\n", $mysqli->error);
 		exit;
 	}
 
-	$stmt->bind_param('ssi', $text, $username, $story_id);
+	$stmt->bind_param('sss', $text, $username, $story_id);
 	$stmt->execute();
 	$stmt->close();
 	//get the number of comments before comment added
@@ -49,8 +48,8 @@
 	$increase_comcount->execute();
 	$increase_comcount->close();
     
-//    reroute to home page once working 
-    //Header("Location: home_page_login.php");
+//reroute to home page once working 
+    //header("Location: post_comment.php");
 	//exit;
 	
 ?>

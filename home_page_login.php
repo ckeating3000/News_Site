@@ -46,7 +46,7 @@
                 echo "<ul>\n";
                 while($get_stories->fetch()){
                     printf("\t<li> <a href='%s'>%s</a> <br> %s <br> %s <br> %s
-						   <a href='view_comments.php?name=%u'>comments</a> on this post<br>
+						   <a href='view_comments.php?name=%u'>comments</a> on this post <br>
 						   <a href='post_comment.php?name=%u'>Add a comment</a>
 						   </li><br>\n",
                         htmlspecialchars($link),
@@ -63,7 +63,7 @@
 					//}
                 }
                 echo "</ul>\n";
-                 
+                
                 $get_stories->close();
                 
                 //destroy the session after someone hits the logout button, send them back to the login screen
