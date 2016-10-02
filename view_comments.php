@@ -24,6 +24,7 @@
 				exit;
 			   }
                 $story_id = $_GET["name"];
+				$_SESSION["story_id"]=$story_id;
 				
                require 'database_r.php';
 			   echo "<br> <br> <br>";
