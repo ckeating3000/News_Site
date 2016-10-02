@@ -27,8 +27,9 @@
 		    echo "<br>\n<br>\n";
 		   
             //display a list of user's posts and comments
+            $username = $_SESSION['Login'];
             require 'database_rw.php';
-            $get_posts = $mysqli->prepare("select link, story_text, username, story_title, story_id, comment_count from stories order by story_id");
+            $get_posts = $mysqli->prepare("select link, story_text, username, story_title, story_id, comment_count from stories where username='$username' order by story_id");
             if(!$get_posts){
                 printf("Query Prep Failed: %s\n", $mysqli->error);
                 exit;
