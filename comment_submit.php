@@ -7,7 +7,8 @@
 	//list of variables to add to table
 	$text=$_POST["comment_submit"];
 	$username=$_SESSION["Login"];
-	echo "beginning";
+	$story_id=$_POST["story_id"];
+
 	//check to make sure article text contains no funny characters
 	//if( !preg_match('/^[\w_\-]+$/', $text) ){
 	//	echo "Invalid article text; remove special characters";
@@ -52,4 +53,3 @@
     //header("Location: post_comment.php");
 	//exit;
 	
-?>

@@ -47,6 +47,7 @@
             <p>Post your comments below</p>
 
             <form name="CommentSubmit" action="comment_submit.php" id=text_form method="POST">
+                <input type="hidden" name="story_id" value="<?php echo $story_id; ?>">
                 <textarea class="text_box" name="comment_submit" >Enter or paste text here... </textarea>
                 <p>
                     <input type="submit" value="Submit Comment" />

@@ -24,8 +24,7 @@
 				exit;
 			   }
                 $story_id = $_GET["name"];
-				//STORE THE story id as a session variable so the user can reference it
-				$_SESSION["story_id"]=$story_id;
+				
                require 'database_r.php';
 			   echo "<br> <br> <br>";
                //display the article
