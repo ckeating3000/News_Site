@@ -9,6 +9,7 @@
                 <strong>Share your story below!</strong>
             </div>
                 <form name="LinkSubmit" action="link_submit.php" method="POST"> 
+                    <input type="hidden" name="token" value="<?php echo $_SESSION['token'];?>" />
                     <p>
                         Post title: <input type="text" name="article_title">
                     </p>

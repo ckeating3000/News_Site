@@ -14,9 +14,15 @@
                 session_start();
                 //check for login
                 if(!isset($_SESSION['Login'])){
-    				Header("Location: home_page_nologin.php");
+    				header("Location: home_page_nologin.php");
     				exit;
-    			   }
+    			 }
+
+                 //check for valid token created when user logs in
+                if($_SESSION['token'] !== $_POST['token']){
+                    die("Request forgery detected");
+                }
+
                 $story_id = $_GET["name"];
 				$_SESSION["story_id"]=$story_id;
     			//STORE THE story id as a session variable so we can reference it in comment_submit.php
@@ -48,6 +54,7 @@
             <p>Post your comments below</p>
 
             <form name="CommentSubmit" action="comment_submit.php" id=text_form method="POST">
+                <input type="hidden" name="token" value="<?php echo $_SESSION['token'];?>" />
                 <input type="hidden" name="story_id" value="<?php echo $story_id; ?>">
                 <textarea class="text_box" name="comment_submit" >Enter or paste text here... </textarea>
                 <p>

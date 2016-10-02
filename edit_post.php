@@ -4,6 +4,17 @@
 	//open mod3 database
 	require 'database_rw.php';
 
+	//check for valid token created when user logs in
+	if($_SESSION['token'] !== $_POST['token']){
+		die("Request forgery detected");
+	}
+
+	//check for login
+    if(!isset($_SESSION['Login'])){
+		header("Location: home_page_nologin.php");
+		exit;
+	}
+
 	//list of variables to update
 	$id = $_POST["id"];
 	$link = $_POST["link_submit"];
