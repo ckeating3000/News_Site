@@ -31,7 +31,7 @@
 	$stmt->execute();
 	$stmt->close();
 
-	header("Location: delete_comments_posts.php");
+	header("Location: home_page_login.php");
 	exit;
 	
 ?>

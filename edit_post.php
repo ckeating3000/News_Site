@@ -58,6 +58,6 @@
 	}
 
 	//redirect
-	header("Location: edit_posts_comments.php");
+	header("Location: home_page_login.php");
 	exit;
 ?>

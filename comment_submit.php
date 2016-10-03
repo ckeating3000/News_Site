@@ -45,13 +45,18 @@
 	//$numcomments=$numcomments +1;
     
 	//increase the comment count in the stories table, from http://stackoverflow.com/questions/2259155/increment-value-in-mysql-update-query
-	$mysqli->query("
-    UPDATE stories
-    SET comment_count = comment_count + 1
-    WHERE story_id = '".$story_id3."'
-");
+	$stmt = $mysqli->prepare("UPDATE stories SET comment_count = comment_count + 1 WHERE story_id =?");
+	if(!$stmt){
+		printf("Query Prep Failed: %s\n", $mysqli->error);
+		 //redirect to error page
+		header("Location: link_upload_error.html");
+		exit;
+	}
+	$stmt->bind_param('s', $story_id3);
+	$stmt->execute();
+	$stmt->close();
     
 //reroute to home page once working 
-    header("Location: home_page_login.php");
+    //header("Location: home_page_login.php");
 	exit;
 	
