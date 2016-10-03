@@ -5,7 +5,7 @@
             <link rel="stylesheet" type="text/css" href="article_submit.css">
         </head>
         <body>
-            
+            <?php session_start(); ?>
             <div>
                 <strong>Send users messages to get to know them better!</strong>
             </div>
