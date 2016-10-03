@@ -9,7 +9,7 @@
 				
 			</p>
                 <!--users that are logged in should be able to: post new articles, logout, -->
-			<p>
+			
 				<form name="view_prof" action="view_profile.php" method="post"> 
 			        <input type="submit" value="View Your Profile"/>
 				</form>
@@ -46,7 +46,6 @@
 			        <input type="submit" value="Logout"/>
 				</form>
 				
-				</p>
         
             <?php
 			    session_start();
@@ -79,7 +78,6 @@
 						    <a href='like_post.php?name=%u'>Like this post</a> <br>
 						   %s <a href='view_comments.php?name=%u'>comments</a> on this post
 						   <a href='post_comment.php?name=%u'>Add a comment</a>
-						   
 						   </p><br>\n",
                         htmlspecialchars($link),
                         htmlspecialchars($title),
