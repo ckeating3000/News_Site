@@ -11,30 +11,39 @@
                 <!--users that are logged in should be able to: post new articles, logout, -->
 
 				<form name="view_prof" action="view_profile.php" method="post"> 
-			   <input type="submit" value="View Your Profile"/>
+			        <input type="submit" value="View Your Profile"/>
 				</form>
 
     			<form name="postArticle" action="article_submit.php" method="post"> 
     			    <input type="submit" value="Create a New Post"/>
     			</form>
-    			<form name="deleteArticle" action="delete_comments_posts.php" method="post"> 
-    			   <input type="submit" value="Delete A Post or Comment"/>
+
+    			<form name="deleteComment" action="delete_comment_list.php" method="post"> 
+    			    <input type="submit" value="Delete A Comment"/>
     			</form>
 
-                <form name="editArticle" action="edit_posts_comments.php" method="post"> 
-                   <input type="submit" value="Edit A Post or Comment"/>
+                <form name="deleteArticle" action="delete_post_list.php" method="post"> 
+                    <input type="submit" value="Delete A Post"/>
+                </form>
+
+                <form name="editArticle" action="edit_post_list.php" method="post"> 
+                    <input type="submit" value="Edit A Post"/>
+                </form>
+
+                 <form name="editComment" action="edit_comment_list.php" method="post"> 
+                    <input type="submit" value="Edit A Comment"/>
                 </form>
 				
 				<form name="messager" action="message_user.php" method="post"> 
-			   <input type="submit" value="Message User"/>
+			        <input type="submit" value="Message User"/>
 				</form>
 				
 				<form name="message_view" action="message_view.php" method="post"> 
-			   <input type="submit" value="View Your Messages"/>
+			        <input type="submit" value="View Your Messages"/>
 				</form>
 
 				<form name="logout" action="logout.php" method="post"> 
-			   <input type="submit" value="Logout"/>
+			        <input type="submit" value="Logout"/>
 				</form>
 
             </nav>

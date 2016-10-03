@@ -17,13 +17,19 @@
 		echo "Error deleting comments:";
 	}
 	//then delete specified row from database
-	$delete_post = "delete from stories where story_id='$id'";
-	if ($mysqli->query($delete_post) === TRUE) {
-		header("Location: home_page_login.php");
+	$stmt = $mysqli->prepare("delete from stories where story_id=?");
+	if(!$stmt){
+		printf("Query Prep Failed: %s\n", $mysqli->error);
+		 //redirect to error page
+		header("Location: link_upload_error.html");
+		exit;
 	}
-	else {
-		echo "Error deleting post";
-	}
+	$stmt->bind_param('s',$id);
+	$stmt->execute();
+	$stmt->close();
+	
+	header("Location: home_page_login.php");
+	exit;
 
 	//redirect to homepage
 	//header("Location: delete_comments_posts.php");
