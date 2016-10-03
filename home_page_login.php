@@ -71,17 +71,16 @@
                  
                 $get_stories->bind_result($link, $text, $username, $title, $id, $comcount, $num_likes);
                  
-                echo "<ul>\n";
 				//links allow users to view the likes and comments of each post as well as post their own
                 while($get_stories->fetch()){
-                    printf("\t<li> <a href='%s'>%s</a> <br> %s <br> Posted by: 
+                    printf("\t<p> <a href='%s'>%s</a> <br> %s <br> Posted by: 
 						   <a href='view_user_other.php?name=%s'>%s</a> <br>
 						   %s <a href='view_likes.php?name=%u'>likes</a> on this post 
 						    <a href='like_post.php?name=%u'>Like this post</a> <br>
 						   %s <a href='view_comments.php?name=%u'>comments</a> on this post
 						   <a href='post_comment.php?name=%u'>Add a comment</a>
 						   
-						   </li><br>\n",
+						   </p><br>\n",
                         htmlspecialchars($link),
                         htmlspecialchars($title),
                         htmlspecialchars($text), 
@@ -95,7 +94,6 @@
 						htmlentities($id)
                     );
                 }
-                echo "</ul>\n";
                 
                 $get_stories->close();
                 

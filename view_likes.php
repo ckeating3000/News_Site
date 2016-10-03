@@ -60,14 +60,12 @@
                  
                 $get_likes->bind_result($likers);
                 echo "Users who have liked this post: ";
-                echo "<ul>\n";
                 while($get_likes->fetch()){
                     printf("\t %s  
 						   \n",
                         htmlspecialchars($likers)
                     );
                 }
-                echo "</ul>\n";
                  
                 $get_likes->close();
                 

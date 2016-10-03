@@ -41,12 +41,11 @@
             $get_posts->execute();
             $get_posts->bind_result($link, $text, $username, $title, $id, $comcount);
             
-            echo "<ul>\n";
 //display posts with link to page that allows editing
             while($get_posts->fetch()){
-                printf("\t<li> <a href='%s'>%s</a> <br> %s <br> %s <br>
+                printf("<p> <a href='%s'>%s</a> <br> %s <br> %s <br>
 					   <a href='edit_post_form.php?name=%s&token=%s'>edit this post</a>
-					   </li><br>\n",
+					   </p><br>",
                     htmlspecialchars($link),
                     htmlspecialchars($title),
                     htmlspecialchars($text),
@@ -55,7 +54,6 @@
                     $_SESSION["token"]
                 );
             }
-            echo "</ul>\n";
             $get_posts->close();
             
             ?>

@@ -34,7 +34,6 @@
                 $get_stories->bind_param('i', $story_id1);
                 $get_stories->execute();
                 $get_stories->bind_result($text, $username, $title);
-                echo "<ul>\n";
     			while($get_stories->fetch()){
                     printf("\t %s <br> %s <br> %s\n",
                         htmlspecialchars($title),
@@ -42,7 +41,6 @@
                         "Posted by: ".htmlspecialchars($username)
                     );
     			}
-                    echo "</ul>\n";
                 $get_stories->close();
             ?>
 <!--form to submit comments in-->

@@ -42,8 +42,6 @@
             $get_posts->execute();
             $get_posts->bind_result($link, $text, $username, $title, $id, $comcount);
             
-            echo "<ul>\n";
-
             while($get_posts->fetch()){
                 printf("\t<li> <a href='%s'>%s</a> <br> %s <br> %s <br>
 					   <a href='edit_post_form.php?name=%s&token=%s'>edit this post</a>

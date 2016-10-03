@@ -42,18 +42,16 @@
             $get_comments->execute();
             $get_comments->bind_result($comment, $story_id, $username, $comment_id);
             
-            echo "<ul>\n";
 			//list comments with link to delete them
             while($get_comments->fetch()){
-                printf("\t<li> %s <br>
+                printf("\t<p> %s <br>
                        <a href='delete_comment.php?name=%s&story=%s'>delete this comment</a>
-                       </li><br>\n",
+                       </p><br>\n",
                     htmlspecialchars($comment),
                     htmlspecialchars($comment_id),
                     htmlspecialchars($story_id)
                 );
             }
-            echo "</ul>\n";
             $get_comments->close();
             
             ?>

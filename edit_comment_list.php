@@ -41,17 +41,15 @@
             $get_comments->execute();
             $get_comments->bind_result($comment, $story_id, $username, $comment_id);
             
-            echo "<ul>\n";
 			//display them with link that takes you to comment editing form
             while($get_comments->fetch()){
-                printf("\t<li> %s <br>
+                printf("\t<p> %s <br>
                        <a href='edit_comment_form.php?name=%s'>edit this comment</a>
-                       </li><br>\n",
+                       </p><br>\n",
                     htmlspecialchars($comment),
                     htmlspecialchars($comment_id)
                 );
             }
-            echo "</ul>\n";
             $get_comments->close();
             
             ?>

@@ -44,12 +44,11 @@
                 
                 $get_stories->bind_result($link, $text, $username, $title, $id, $comcount);
                  
-                echo "<ul>\n";
                 while($get_stories->fetch()){
 					//nonusers can only see comments from other users
-                        printf("\t<li> <a href='%s'>%s</a> <br> %s <br> %s <br> %s
-						   <a href='view_commentsnologin.php?name=%u'>comments</a> on this post<br>
-						   </li><br>\n",
+                        printf(" <p><a href='%s'>%s</a> <br> %s <br> %s <br> %s
+						   <a href='view_commentsnologin.php?name=%u'>comments</a> on this post </p>
+						   ",
                         htmlspecialchars($link),
                         htmlspecialchars($title),
                         htmlspecialchars($text), 
@@ -58,7 +57,6 @@
 						htmlentities($id)
                     );
                 }
-                echo "</ul>\n";
                  
                 $get_stories->close();
                 ?>

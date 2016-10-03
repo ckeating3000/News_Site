@@ -55,10 +55,9 @@
                  
                 $get_stories->bind_result($username, $comment, $id);
                  
-                echo "<ul>\n";
                 while($get_stories->fetch()){
-                    printf("\t<li> %s said: %s <br> 
-						   </li><br>\n",
+                    printf("\t<p> %s said: %s <br> 
+						   </p><br>\n",
                         htmlspecialchars($username),
                         htmlspecialchars($comment)
                     );
@@ -68,7 +67,6 @@
 					//	echo "<a href='delete.php?name=$title'>Delete this Post</a>";
 					//}
                 }
-                echo "</ul>\n";
                  
                 $get_stories->close();
                 

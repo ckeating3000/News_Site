@@ -39,19 +39,17 @@ $username = $_SESSION['Login'];
             $get_posts->execute();
             $get_posts->bind_result($link, $text, $username, $title, $id, $comcount);
             
-            echo "<ul>\n";
 			//display posts with link to php page to delete them
             while($get_posts->fetch()){
-                printf("\t<li> <a href='%s'>%s</a> <br> %s <br> <br>
+                printf("<p> <a href='%s'>%s</a> <br> %s <br> <br>
 					   <a href='delete_post.php?name=%s'>delete this post</a>
-					   </li><br>\n",
+					   </p><br>",
                     htmlspecialchars($link),
                     htmlspecialchars($title),
                     htmlspecialchars($text),
 					htmlentities($id)
                 );
             }
-            echo "</ul>\n";
             $get_posts->close();
             
             ?>
