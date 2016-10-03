@@ -1,9 +1,11 @@
 Group members: Kate Harline (428944) and Colin Keating (430338)
 
-Front page: http://54.166.238.51/~ckeating3000/Module3group/home_page_nologin.php
+Front page: http://ec2-52-87-244-67.compute-1.amazonaws.com/~kharline/mod3/home_page_nologin.php
 
 Creative portion: 	1) added messaging function to send messages to other users.  Messages are stored in a separate table in our database
-					2) added function that counts the number of comments on a news article 
+	2) added user profile pages so users can post information about themselves
+	3) added function that counts the number of comments on a news article
+	4) added funtion that allows users to like posts and view the people that have liked the post
 
 
 Login details: Can create a new user or use [ user:Colin / password:cse330  ] which already has a couple of articles and comments

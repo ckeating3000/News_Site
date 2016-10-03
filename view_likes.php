@@ -1,7 +1,7 @@
 <!DOCTYPE html>
     <html>
         <head>
-            <title>Comment View</title>
+            <title>View Likes</title>
         </head>
         <body>
             <p>
@@ -61,8 +61,8 @@
                 echo "Users who have liked this post: ";
                 echo "<ul>\n";
                 while($get_likes->fetch()){
-                    printf("\t<li> %s  
-						   </li>\n",
+                    printf("\t %s  
+						   \n",
                         htmlspecialchars($likers)
                     );
                 }
