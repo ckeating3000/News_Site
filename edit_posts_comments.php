@@ -25,11 +25,12 @@
 		    }
 
 		    echo "<br>\n<br>\n";
+			$username = $_SESSION['Login'];
+            require 'database_rw.php';
 		   
 		   echo "Your Posts";
             //DISPLAY/EDIT POSTS
-            $username = $_SESSION['Login'];
-            require 'database_rw.php';
+
             
             $get_posts = $mysqli->prepare("select link, story_text, username, story_title, story_id, comment_count from stories where username=? order by story_id");
             if(!$get_posts){
