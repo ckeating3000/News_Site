@@ -24,6 +24,10 @@
                 <form name="editArticle" action="edit_posts_comments.php" method="post"> 
                    <input type="submit" value="Edit A Post or Comment"/>
                 </form>
+				
+				<form name="messager" action="message_user.php" method="post"> 
+			   <input type="submit" value="Message User"/>
+				</form>
 
 				<form name="logout" action="logout.php" method="post"> 
 			   <input type="submit" value="Logout"/>
