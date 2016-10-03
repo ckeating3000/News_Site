@@ -2,6 +2,7 @@
     <html>
         <head>
             <title>Delete Comments</title>
+			<link rel="stylesheet" type="text/css" href="mewstories.css"/>
         </head>
         <body>
             

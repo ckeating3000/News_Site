@@ -2,14 +2,14 @@
     <html>
         <head>
             <title>New Stories</title>
+			<link rel="stylesheet" type="text/css" href="mewstories.css"/>
         </head>
         <body>
             <p>
 				
 			</p>
-            <nav>
                 <!--users that are logged in should be able to: post new articles, logout, -->
-
+			<p>
 				<form name="view_prof" action="view_profile.php" method="post"> 
 			        <input type="submit" value="View Your Profile"/>
 				</form>
@@ -45,8 +45,8 @@
 				<form name="logout" action="logout.php" method="post"> 
 			        <input type="submit" value="Logout"/>
 				</form>
-
-            </nav>
+				
+				</p>
         
             <?php
 			    session_start();

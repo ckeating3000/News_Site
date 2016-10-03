@@ -1,10 +1,15 @@
 <!DOCTYPE html>
     <html>
         <head>
-            <title>EDIT POST</title>
+            <title>Edit Post</title>
+            <link rel="stylesheet" type="text/css" href="mewstories.css"/>
         </head>
         <body>
         <?php session_start(); ?>
+         <!--home button -->
+                <form name="Home" action="home_page_login.php" method="post"> 
+                     <input type="submit" value="Home"/>
+                </form>
             <div>
                 <strong>Edit your comment</strong>
             </div>

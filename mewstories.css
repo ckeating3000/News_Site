@@ -1,17 +1,6 @@
-/*formatting for the submission forms*/
-.link_box{
-	width: 300px;
-	height: 30px;
-}
-
-.text_box{
-	width: 400px;
-	height: 200px;
-}
-
 body{
         background-color: black;
-		text-align: left;
+	text-align: left;
         margin: 25px;
         border-style: solid;
         border-width: 5px;
@@ -19,9 +8,9 @@ body{
 }
 p {
         background-color: MediumSpringGreen;
-		padding: 10px;
-		font: 20px/20px Times New Roman;
-         color: MidnightBlue;
+	padding: 10px;
+	font: 20px/20px Times New Roman;
+        color: MidnightBlue;
 }
 /*from http://www.w3schools.com/css/css_form.asp*/
 input:focus {
@@ -32,7 +21,18 @@ input {
     border: none;
     border-bottom: 2px solid Peru;
     padding: 10px;
-	margin: 5px;
+    margin: 5px;
 }
 
+/* unvisited link */
+a:link {
+    color: PowderBlue;
+}
 
+/* visited link */
+a:visited {
+    color: Orchid;
+}
+
+/*<link rel="stylesheet" type="text/css" href="mewstories.css"/> this is the link
+ *to use if you want to add this style sheet as a header

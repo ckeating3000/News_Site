@@ -2,6 +2,7 @@
     <html>
         <head>
             <title>User Profile</title>
+			<link rel="stylesheet" type="text/css" href="mewstories.css"/>
         </head>
         <body>
             <form name="edit_prof" action="edit_profile.php" method="post"> 

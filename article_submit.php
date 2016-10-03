@@ -6,6 +6,10 @@
         </head>
         <body>
             <?php session_start();?>
+              <!--home button -->
+                <form name="Home" action="home_page_login.php" method="post"> 
+                     <input type="submit" value="Home"/>
+                </form>
             <div>
                 <!--from so users can submit stories-->
                 <strong>Share your story below!</strong>

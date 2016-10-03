@@ -2,6 +2,7 @@
     <html>
         <head>
             <title>Delete User Posts</title>
+            <link rel="stylesheet" type="text/css" href="mewstories.css"/>
         </head>
         <body>
          <!--this was a trail page and isn't actually used in the code-->   

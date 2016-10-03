@@ -2,6 +2,7 @@
     <html>
         <head>
             <title>NewStories</title>
+			<link rel="stylesheet" type="text/css" href="mewstories.css"/>
         </head>
         <body>
 			

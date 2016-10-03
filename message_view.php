@@ -2,6 +2,7 @@
     <html>
         <head>
             <title>Personal Messages</title>
+			<link rel="stylesheet" type="text/css" href="mewstories.css"/>
         </head>
         <body>
             <p>

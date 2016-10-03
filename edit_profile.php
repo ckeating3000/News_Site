@@ -1,8 +1,9 @@
 <!DOCTYPE html>
     <html>
         <head>
-            <title>Comment on a Post</title>
+            <title>Edit Your Profile</title>
             <link rel="stylesheet" type="text/css" href="article_submit.css">
+			
         </head>
         <body>
 			<!--form that allows users to add information about themselves, sent to php to store info

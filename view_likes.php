@@ -2,6 +2,7 @@
     <html>
         <head>
             <title>View Likes</title>
+			<link rel="stylesheet" type="text/css" href="mewstories.css"/>
         </head>
         <body>
             <p>

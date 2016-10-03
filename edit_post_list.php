@@ -2,6 +2,7 @@
     <html>
         <head>
             <title>Edit your posts and comments</title>
+			<link rel="stylesheet" type="text/css" href="mewstories.css"/>
         </head>
         <body>
             
