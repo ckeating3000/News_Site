@@ -18,8 +18,7 @@
     				exit;
     			 }
 
-                $story_id = $_GET["name"];
-				$_SESSION["story_id"]=$story_id;
+                $story_id1 = $_GET["name"];
     			//STORE THE story id as a session variable so we can reference it in comment_submit.php
     			//$_SESSION["story_id"]=$story_id;
 
@@ -31,7 +30,7 @@
                     printf("Query Prep Failed: %s\n", $mysqli->error);
                     exit;
                 }
-                $get_stories->bind_param('i', $story_id);
+                $get_stories->bind_param('i', $story_id1);
                 $get_stories->execute();
                 $get_stories->bind_result($text, $username, $title);
                 echo "<ul>\n";
@@ -50,7 +49,7 @@
 
             <form name="CommentSubmit" action="comment_submit.php" id=text_form method="POST">
                 <input type="hidden" name="token" value="<?php echo $_SESSION['token'];?>" />
-                <input type="hidden" name="story_id" value="<?php echo $story_id; ?>">
+                <input type="hidden" name="story_id2" value="<?php echo $story_id1; ?>">
                 <textarea class="text_box" name="comment_submit" >Enter or paste text here... </textarea>
                 <p>
                     <input type="submit" value="Submit Comment" />

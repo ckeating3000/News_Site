@@ -12,7 +12,8 @@
 	//list of variables to add to table
 	$text=$_POST["comment_submit"];
 	$username=$_SESSION["Login"];
-	$story_id=$_SESSION["story_id"];
+	$story_id3=$_POST["story_id2"];
+	//$story_id=$_SESSION["story_id"];
 
 	//check to make sure article text contains no funny characters
 	//if( !preg_match('/^[\w_\-]+$/', $text) ){
@@ -27,7 +28,7 @@
 		exit;
 	}
 
-	$stmt->bind_param('sss', $text, $username, $story_id);
+	$stmt->bind_param('sss', $text, $username, $story_id3);
 	$stmt->execute();
 	$stmt->close();
 	//get the number of comments before comment added
@@ -47,10 +48,10 @@
 	$mysqli->query("
     UPDATE stories
     SET comment_count = comment_count + 1
-    WHERE story_id = '".$story_id."'
+    WHERE story_id = '".$story_id3."'
 ");
     
 //reroute to home page once working 
-    header("Location: home_page_login.php");
-	exit;
+    //header("Location: home_page_login.php");
+	//exit;
 	
