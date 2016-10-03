@@ -9,6 +9,7 @@
 			</p>
             <nav>
                 <!--users that are logged in should be able to: post new articles, logout, -->
+
 				<form name="view_prof" action="view_profile.php" method="post"> 
 			   <input type="submit" value="View Your Profile"/>
 				</form>
@@ -18,24 +19,39 @@
 				<form name="deleteArticle" action="delete_comments_posts.php" method="post"> 
 			   <input type="submit" value="Delete A Post or Comment"/>
 				</form>
+
+    			<form name="postArticle" action="article_submit.html" method="post"> 
+    			    <input type="submit" value="Create a New Post"/>
+    			</form>
+    			<form name="deleteArticle" action="delete_comments_posts.php" method="post"> 
+    			   <input type="submit" value="Delete A Post or Comment"/>
+    			</form>
+
                 <form name="editArticle" action="edit_posts_comments.php" method="post"> 
-               <input type="submit" value="Edit A Post or Comment"/>
+                   <input type="submit" value="Edit A Post or Comment"/>
                 </form>
+
 				<form name="logout" action="logout.php" method="post"> 
 			   <input type="submit" value="Logout"/>
 				</form>
 				
+
+    			<form name="logout" action="logout.php" method="post"> 
+    			   <input type="submit" value="Logout"/>
+    			</form>
+
             </nav>
             <!--sidebar of options-->
         
-               <?php
-			   session_start();
-			   if(!isset($_SESSION['Login'])){
-				Header("Location: home_page_nologin.php");
-				exit;
-			   }
-			   echo "<br> <br> <br>";
-			   echo "Welcome ".$_SESSION["Login"]."!";
+            <?php
+			    session_start();
+			    if(!isset($_SESSION['Login'])){
+				    Header("Location: home_page_nologin.php");
+				    exit;
+			    }
+
+			    echo "<br> <br> <br>";
+			    echo "Welcome ".$_SESSION["Login"]."!";
 			   
                 //display a list of articles
                 require 'database_r.php';
@@ -72,8 +88,6 @@
                 
                 $get_stories->close();
                 
-                
-                
-                ?>
+            ?>
         </body>
     </html>

@@ -4,12 +4,29 @@
 	//open mod3 database
 	require 'database_rw.php';
 
-	$id = $_GET["name"];
+	//check for tokens
+	if(isset($_GET['token'])){
+		if($_SESSION['token'] !== $_GET['token']){
+			die("Request forgery detected");
+		}
+	}
+
+	if(isset($_POST['token'])){
+		if($_SESSION['token'] !== $_POST['token']){
+			die("Request forgery detected");
+		}
+	}
+
+	//check for login
+    if(!isset($_SESSION['Login'])){
+		header("Location: home_page_nologin.php");
+		exit;
+	}
 
 	//list of variables to update
+	$id = $_POST["id"];
 	$link = $_POST["link_submit"];
 	$comment = $_POST["comment_submit"];
-	$title = $_POST["article_title"];
 	$username = $_SESSION["Login"];
 
 	//check to make sure link exists
@@ -28,14 +45,14 @@
 	
  	if($link_exists){
 		//then update specified story in database
-		$stmt = $mysqli->prepare("update stories set link=?, username=?, story_title=?, story_text=? where story_id='$id'");
+		$stmt = $mysqli->prepare("update stories set link=?, story_text=? where story_id=?");
 		if(!$stmt){
-				printf("Query Prep Failed: %s\n", $mysqli->error);
-				 //redirect to error page
-				header("Location: link_upload_error.html");
-				exit;
+			printf("Query Prep Failed: %s\n", $mysqli->error);
+			 //redirect to error page
+			header("Location: link_upload_error.html");
+			exit;
 		}
-		$stmt->bind_param('ssss', htmlspecialchars($link), $username, $title, $comment);
+		$stmt->bind_param('sss', htmlspecialchars($link), $comment, $id);
 		$stmt->execute();
 		$stmt->close();
 	}
