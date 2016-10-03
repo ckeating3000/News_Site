@@ -6,7 +6,6 @@
 
 	//check for valid token created when user logs in
 	if($_SESSION['token'] !== $_POST['token']){
-		echo $_SESSION['token']."---".$_POST['token'];
 		die("Request forgery detected");
 	}
 
