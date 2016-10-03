@@ -60,7 +60,7 @@
             $get_posts->close();
 
         //DISPLAY/DELETE COMMENTS
-echo "Your comments";
+            echo "Your comments";
             $get_comments = $mysqli->prepare("select comment, story_id, username, comment_id from comments where username=? order by story_id");
             if(!$get_comments){
                 printf("Query Prep Failed: %s\n", $mysqli->error);
