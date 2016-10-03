@@ -5,6 +5,7 @@
             <link rel="stylesheet" type="text/css" href="article_submit.css">
         </head>
         <body>
+            <?php session_start();?>
             <div>
                 <strong>Share your story below!</strong>
             </div>
