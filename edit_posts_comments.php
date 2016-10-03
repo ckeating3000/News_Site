@@ -30,25 +30,25 @@
             $username = $_SESSION['Login'];
             require 'database_rw.php';
             
-            $get_posts = $mysqli->prepare("select link, story_text, username, story_title, story_id, comment_count from stories where username='$username' order by story_id");
+            $get_posts = $mysqli->prepare("select link, story_text, username, story_title, story_id, comment_count from stories where username=? order by story_id");
             if(!$get_posts){
                 printf("Query Prep Failed: %s\n", $mysqli->error);
                 exit;
             }
+			$get_posts->bind_param('s', $username);
             $get_posts->execute();
             $get_posts->bind_result($link, $text, $username, $title, $id, $comcount);
             
             echo "<ul>\n";
 
             while($get_posts->fetch()){
-                printf("\t<li> <a href='%s'>%s</a> <br> %s <br> %s <br> %s
+                printf("\t<li> <a href='%s'>%s</a> <br> %s <br> %s <br>
 					   <a href='edit_post_form.php?name=%s&token=%s'>edit this post</a>
 					   </li><br>\n",
                     htmlspecialchars($link),
                     htmlspecialchars($title),
                     htmlspecialchars($text),
                     "Posted by: ".htmlspecialchars($username),
-					htmlentities($id),
 					htmlentities($id),
                     $_SESSION["token"]
                 );
@@ -57,11 +57,12 @@
             $get_posts->close();
 
             //DISPLAY/EDIT COMMENTS
-            $get_comments = $mysqli->prepare("select comment, story_id, username, comment_id from comments where username='$username' order by story_id");
+            $get_comments = $mysqli->prepare("select comment, story_id, username, comment_id from comments where username=?");
             if(!$get_comments){
                 printf("Query Prep Failed: %s\n", $mysqli->error);
                 exit;
             }
+			$get_comments->bind_param('s', $username);
             $get_comments->execute();
             $get_comments->bind_result($comment, $story_id, $username, $comment_id);
             
