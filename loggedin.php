@@ -5,7 +5,7 @@
     require 'database.php';
 
     
-
+	
     $username=$_POST["username"];
     $password_guess=$_POST["password"];
     	//make sure username is safe
