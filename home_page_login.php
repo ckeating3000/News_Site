@@ -28,6 +28,10 @@
 				<form name="messager" action="message_user.php" method="post"> 
 			   <input type="submit" value="Message User"/>
 				</form>
+				
+				<form name="message_view" action="message_view.php" method="post"> 
+			   <input type="submit" value="View Your Messages"/>
+				</form>
 
 				<form name="logout" action="logout.php" method="post"> 
 			   <input type="submit" value="Logout"/>
