@@ -13,8 +13,7 @@
 	$mysqli->query("
     UPDATE stories
     SET comment_count = comment_count - 1
-    WHERE story_id = '".$story_id."'
-	");
+    WHERE story_id = $id");
 	if ($mysqli->query($delete_comments) === TRUE) {
 		header("Location: delete_comments_posts.php");
 			//decrease the comment count in the stories table, from http://stackoverflow.com/questions/2259155/increment-value-in-mysql-update-query

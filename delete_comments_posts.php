@@ -25,7 +25,7 @@
 		    }
 
 		    echo "<br>\n<br>\n";
-		   
+		   echo "Your posts";
         //DISPLAY/DELETE POSTS
             $username = $_SESSION['Login'];
             require 'database_rw.php';
@@ -40,7 +40,7 @@
             $get_posts->bind_result($link, $text, $username, $title, $id, $comcount);
             
             echo "<ul>\n";
-
+			
             while($get_posts->fetch()){
                 printf("\t<li> <a href='%s'>%s</a> <br> %s <br> <br>
 					   <a href='delete_post.php?name=%s'>delete this post</a>
@@ -60,7 +60,7 @@
             $get_posts->close();
 
         //DISPLAY/DELETE COMMENTS
-
+echo "Your comments";
             $get_comments = $mysqli->prepare("select comment, story_id, username, comment_id from comments where username=? order by story_id");
             if(!$get_comments){
                 printf("Query Prep Failed: %s\n", $mysqli->error);
