@@ -56,14 +56,17 @@
                  
                 echo "<ul>\n";
                 while($get_stories->fetch()){
-                    printf("\t<li> <a href='%s'>%s</a> <br> %s <br> %s <br> %s
+                    printf("\t<li> <a href='%s'>%s</a> <br> %s <br> Posted by: 
+						   <a href='view_user_other.php?name=%s'>%s</a> <br> %s
 						   <a href='view_comments.php?name=%u'>comments</a> on this post <br>
 						   <a href='post_comment.php?name=%u'>Add a comment</a>
+						   
 						   </li><br>\n",
                         htmlspecialchars($link),
                         htmlspecialchars($title),
                         htmlspecialchars($text), 
-                        "Posted by: ".htmlspecialchars($username),
+                        htmlspecialchars($username),
+						htmlspecialchars($username),
 						"There are ".htmlspecialchars($comcount),
 						htmlentities($id),
 						htmlentities($id)

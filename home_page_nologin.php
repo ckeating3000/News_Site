@@ -4,7 +4,8 @@
             <title>NewStories</title>
         </head>
         <body>
-            
+			
+           
             <nav>
                 
             </nav>
@@ -17,7 +18,9 @@
                         <input type="submit" value="Login" />
                     </p>
                 </form>
-            
+            <p>
+				 Join Newstories to view user profiles, add your own posts and comments and more!
+			</p>
                 <!-- add a user -->
                 <form name="add_user" action="add_user.html" method="POST">
                      <p>

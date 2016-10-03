@@ -26,6 +26,7 @@
 
 		    echo "<br>\n<br>\n";
 		   
+		   echo "Your Posts";
             //DISPLAY/EDIT POSTS
             $username = $_SESSION['Login'];
             require 'database_rw.php';
@@ -55,7 +56,8 @@
             }
             echo "</ul>\n";
             $get_posts->close();
-
+			
+			echo "Your comments";
             //DISPLAY/EDIT COMMENTS
             $get_comments = $mysqli->prepare("select comment, story_id, username, comment_id from comments where username=?");
             if(!$get_comments){

@@ -20,7 +20,7 @@
                     <p>
                         <input type="hidden" value="<?php echo $_GET['name']; ?>" name="id" />
                         <input type="hidden" name="token" value="<?php echo $_SESSION['token'];?>" />
-                        <input type="submit" value="Submit Link" />
+                        <input type="submit" value="Submit Edit" />
                     </p>
                 </form>
 
