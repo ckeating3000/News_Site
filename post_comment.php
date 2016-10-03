@@ -18,11 +18,6 @@
     				exit;
     			 }
 
-                 //check for valid token created when user logs in
-                if($_SESSION['token'] !== $_POST['token']){
-                    die("Request forgery detected");
-                }
-
                 $story_id = $_GET["name"];
 				$_SESSION["story_id"]=$story_id;
     			//STORE THE story id as a session variable so we can reference it in comment_submit.php

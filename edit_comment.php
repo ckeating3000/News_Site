@@ -4,10 +4,6 @@
 	//open mod3 database
 	require 'database_rw.php';
 
-	echo $_SESSION['token'];
-	echo "-----";
-	echo $_POST['token'];
-	
 	//check for tokens
 	if(isset($_GET['token'])){
 		if($_SESSION['token'] !== $_GET['token']){
@@ -32,11 +28,11 @@
 	$comment = $_POST["comment_submit"];
 	
 	//then update specified comment in database
-	$stmt = $mysqli->prepare("update comments set comment=?, where comment_id=?");
+	$stmt = $mysqli->prepare("update comments set comment=? where comment_id=?");
 	if(!$stmt){
 		printf("Query Prep Failed: %s\n", $mysqli->error);
 		 //redirect to error page
-		header("Location: link_upload_error.html");
+		//header("Location: link_upload_error.html");
 		exit;
 	}
 	$stmt->bind_param('ss', $comment, $comment_id);
