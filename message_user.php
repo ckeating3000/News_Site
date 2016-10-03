@@ -23,7 +23,7 @@
                         
                         <textarea class="text_box" name="message" > </textarea>
                         <p>
-                        <input type="submit" value="Submit Link" />
+                        <input type="submit" value="Send message" />
                     </p>
                 </form>
 
