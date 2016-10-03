@@ -23,7 +23,7 @@
 			    header("Location: home_page_nologin.php");
 			    exit;
 		    }
-$username = $_SESSION['Login'];
+			$username = $_SESSION['Login'];
             require 'database_rw.php';
 		    echo "<br>\n<br>\n";
 		   
