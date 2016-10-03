@@ -14,7 +14,7 @@
 			   <input type="submit" value="View Your Profile"/>
 				</form>
 
-    			<form name="postArticle" action="article_submit.html" method="post"> 
+    			<form name="postArticle" action="article_submit.php" method="post"> 
     			    <input type="submit" value="Create a New Post"/>
     			</form>
     			<form name="deleteArticle" action="delete_comments_posts.php" method="post"> 
