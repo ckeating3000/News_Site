@@ -52,7 +52,7 @@
 			   
                 //display a list of articles
                 require 'database_r.php';
-                $get_stories = $mysqli->prepare("select link, story_text, username, story_title, story_id, comment_count from stories order by story_id");
+                $get_stories = $mysqli->prepare("select link, story_text, username, story_title, story_id, comment_count, num_likes from stories order by story_id");
                 if(!$get_stories){
                     printf("Query Prep Failed: %s\n", $mysqli->error);
                     exit;
@@ -60,13 +60,15 @@
                  
                 $get_stories->execute();
                  
-                $get_stories->bind_result($link, $text, $username, $title, $id, $comcount);
+                $get_stories->bind_result($link, $text, $username, $title, $id, $comcount, $num_likes);
                  
                 echo "<ul>\n";
                 while($get_stories->fetch()){
                     printf("\t<li> <a href='%s'>%s</a> <br> %s <br> Posted by: 
-						   <a href='view_user_other.php?name=%s'>%s</a> <br> %s
-						   <a href='view_comments.php?name=%u'>comments</a> on this post <br>
+						   <a href='view_user_other.php?name=%s'>%s</a> <br>
+						   %s <a href='view_likes.php?name=%u'>likes</a> on this post 
+						    <a href='like_post.php?name=%u'>Like this post</a> <br>
+						   %s <a href='view_comments.php?name=%u'>comments</a> on this post
 						   <a href='post_comment.php?name=%u'>Add a comment</a>
 						   
 						   </li><br>\n",
@@ -75,6 +77,9 @@
                         htmlspecialchars($text), 
                         htmlspecialchars($username),
 						htmlspecialchars($username),
+						"There are ".htmlspecialchars($num_likes),
+						htmlentities($id),
+						htmlentities($id),
 						"There are ".htmlspecialchars($comcount),
 						htmlentities($id),
 						htmlentities($id)

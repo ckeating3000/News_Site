@@ -57,6 +57,7 @@
 		$stmt->close();
 	}
 
-	//redirect to homepage
+	//redirect
 	header("Location: edit_posts_comments.php");
+	exit;
 ?>

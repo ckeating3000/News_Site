@@ -20,7 +20,7 @@
                <?php
 			   session_start();
 				 if(!isset($_SESSION['Login'])){
-				Header("Location: view_commentsnologin.php");
+				Header("Location: home_page_nologin.php");
 				exit;
 			   }
                 $story_id = $_GET["name"];
@@ -49,30 +49,26 @@
                  
                 //display a list of comments
                 
-                $get_stories = $mysqli->prepare("select username, comment, story_id from comments where story_id=?");
-                if(!$get_stories){
+                $get_likes = $mysqli->prepare("select likers from stories where story_id=?");
+                if(!$get_likes){
                     printf("Query Prep Failed: %s\n", $mysqli->error);
                     exit;
                 }
-                $get_stories->bind_param('i', $story_id);
-                $get_stories->execute();
+                $get_likes->bind_param('i', $story_id);
+                $get_likes->execute();
                  
-                $get_stories->bind_result($username, $comment, $id);
-                 
+                $get_likes->bind_result($likers);
+                echo "Users who have liked this post: ";
                 echo "<ul>\n";
-                while($get_stories->fetch()){
-                    printf("\t<li> %s said: %s <br> 
-						   </li><br>\n",
-                        htmlspecialchars($username),
-                        htmlspecialchars($comment)
-                        
+                while($get_likes->fetch()){
+                    printf("\t<li> %s  
+						   </li>\n",
+                        htmlspecialchars($likers)
                     );
                 }
                 echo "</ul>\n";
                  
-                $get_stories->close();
-                
-               
+                $get_likes->close();
                 
                 ?>
         </body>
