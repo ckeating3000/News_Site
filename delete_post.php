@@ -27,10 +27,7 @@
 	$stmt->bind_param('s',$id);
 	$stmt->execute();
 	$stmt->close();
-	
+	//redirect to homepage
 	header("Location: home_page_login.php");
 	exit;
-
-	//redirect to homepage
-	//header("Location: delete_comments_posts.php");
 ?>

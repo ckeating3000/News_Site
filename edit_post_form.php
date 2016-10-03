@@ -8,6 +8,7 @@
             <div>
                 <strong>Edit your post</strong>
             </div>
+            <!--form with options to edit the post-->
                 <form action="edit_post.php" method="POST"> 
                     <p>
                          Story link: <input type="text" name="link_submit">

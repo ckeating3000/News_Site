@@ -15,7 +15,6 @@
 				</form>
 				
             </nav>
-            <!--sidebar of options-->
         
                <?php
 			   session_start();

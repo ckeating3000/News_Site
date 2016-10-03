@@ -15,7 +15,6 @@
                      <input type="submit" value="Home"/>
                 </form>
             </nav>
-            <!--sidebar of options-->
         
             <?php
 		    session_start();
@@ -31,7 +30,7 @@
 		   echo "Your Posts";
             //DISPLAY/EDIT POSTS
 
-            
+            //get user posts from the database
             $get_posts = $mysqli->prepare("select link, story_text, username, story_title, story_id, comment_count from stories where username=? order by story_id");
             if(!$get_posts){
                 printf("Query Prep Failed: %s\n", $mysqli->error);
@@ -42,7 +41,7 @@
             $get_posts->bind_result($link, $text, $username, $title, $id, $comcount);
             
             echo "<ul>\n";
-
+//display posts with link to page that allows editing
             while($get_posts->fetch()){
                 printf("\t<li> <a href='%s'>%s</a> <br> %s <br> %s <br>
 					   <a href='edit_post_form.php?name=%s&token=%s'>edit this post</a>

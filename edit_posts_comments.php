@@ -15,7 +15,7 @@
                      <input type="submit" value="Home"/>
                 </form>
             </nav>
-            <!--sidebar of options-->
+            <!--not used anymore because of bugs-->
         
             <?php
 		    session_start();

@@ -5,7 +5,7 @@ require 'database_rw.php';
 if($_SESSION['token'] !== $_POST['token']){
 	die("Request forgery detected");
 }
-
+//add email to the database
 $email =$_POST["email"];
 $username = $_SESSION["Login"];
 $set= $mysqli->prepare("update users set email=? where username=?");

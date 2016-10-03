@@ -4,7 +4,7 @@
             <title>Delete User Posts</title>
         </head>
         <body>
-            
+         <!--this was a trail page and isn't actually used in the code-->   
         <!--code from http://stackoverflow.com/questions/14475096/delete-multiple-rows-by-selecting-checkboxes-using-php-->
         <?php
             require 'database_rw.php';

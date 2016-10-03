@@ -10,7 +10,6 @@
                 
             </nav>
 
-            <!--sidebar of options-->
             <aside>
                 <form name="Login" action="loggedin.php" method="POST"> <!--add action to go to page with files-->
                     <p>Username: <input type="text" name="username">
@@ -46,6 +45,7 @@
                  
                 echo "<ul>\n";
                 while($get_stories->fetch()){
+					//nonusers can only see comments from other users
                         printf("\t<li> <a href='%s'>%s</a> <br> %s <br> %s <br> %s
 						   <a href='view_commentsnologin.php?name=%u'>comments</a> on this post<br>
 						   </li><br>\n",

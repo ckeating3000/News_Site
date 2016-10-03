@@ -8,4 +8,5 @@ Creative portion: 	1) added messaging function to send messages to other users. 
 	4) added funtion that allows users to like posts and view the people that have liked the post
 
 
-Login details: Can create a new user or use [ user:Colin / password:cse330  ] which already has a couple of articles and comments
+Login details: Can create a new user or use [ user:Colin / password:cse330  ]
+which already has a couple of articles and comments

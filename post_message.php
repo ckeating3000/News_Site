@@ -19,13 +19,13 @@
 		$message = $mysqli->prepare("insert into messages (user_from, user_to, message, subject) values (?, ?, ?, ?)");
 		if(!$message){
 			printf("Query Prep Failed: %s\n", $mysqli->error);
-			 //redirect to error page
 		}
 		$message->bind_param('ssss', htmlspecialchars($user_from), htmlspecialchars($user_to), htmlspecialchars($body), htmlspecialchars($subject));
 		$message->execute();
 		$message->close();
 		//redirect to homepage
 		header("Location: messagesent.html");
+		exit;
 	
 	
 ?>

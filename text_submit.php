@@ -1,6 +1,6 @@
 <?php
 	session_start();
-
+//no longer used because of new structure
 	//open mod3 database
 	require 'database_rw.php';
 

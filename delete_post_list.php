@@ -15,7 +15,6 @@
                      <input type="submit" value="Home"/>
                 </form>
             </nav>
-            <!--sidebar of options-->
         
             <?php
 		    session_start();
@@ -28,6 +27,7 @@ $username = $_SESSION['Login'];
 		    echo "<br>\n<br>\n";
             
         //DISPLAY/DELETE POSTS
+		//get posts from database
             echo "Your posts";
             $get_posts = $mysqli->prepare("select link, story_text, username, story_title, story_id, comment_count from stories where username=? order by story_id");
             if(!$get_posts){
@@ -39,7 +39,7 @@ $username = $_SESSION['Login'];
             $get_posts->bind_result($link, $text, $username, $title, $id, $comcount);
             
             echo "<ul>\n";
-			
+			//display posts with link to php page to delete them
             while($get_posts->fetch()){
                 printf("\t<li> <a href='%s'>%s</a> <br> %s <br> <br>
 					   <a href='delete_post.php?name=%s'>delete this post</a>

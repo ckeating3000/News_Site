@@ -19,7 +19,6 @@
 				</form>
 				
             </nav>
-            <!--sidebar of options-->
         
                <?php
 			   session_start();
@@ -33,12 +32,13 @@
 				
                require 'database_r.php';
 			   echo "<br> <br> <br>";
-               //display messages
+               //get messages from db
                 $get_messages = $mysqli->prepare("select user_from, message, subject from messages where user_to=?");
                 if(!$get_messages){
                     printf("Query Prep Failed: %s\n", $mysqli->error);
                     exit;
                 }
+				//list messages with information about them
                 $get_messages->bind_param('s', $username);
                 $get_messages->execute();
                 $get_messages->bind_result($user_from, $message, $subject);

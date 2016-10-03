@@ -5,6 +5,8 @@
             <link rel="stylesheet" type="text/css" href="article_submit.css">
         </head>
         <body>
+			<!--form that allows users to add information about themselves, sent to php to store info
+			in users database-->
             <?php session_start();?>
 			<form name="return" action="home_page_login.php" method="post"> 
                 <input type="hidden" name="token" value="<?php echo $_SESSION['token'];?>" />

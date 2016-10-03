@@ -5,7 +5,7 @@ require 'database_rw.php';
 if($_SESSION['token'] !== $_POST['token']){
 	die("Request forgery detected");
 }
-
+//copied from email update in db
 $email =$_POST["phone_num"];
 $username = $_SESSION["Login"];
 $set= $mysqli->prepare("update users set phone_number=? where username=?");

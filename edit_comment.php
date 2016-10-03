@@ -41,4 +41,5 @@
 
 	//redirect to homepage
 	header("Location: edit_posts_comments.php");
+	exit;
 ?>

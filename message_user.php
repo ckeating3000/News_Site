@@ -5,6 +5,7 @@
             <link rel="stylesheet" type="text/css" href="article_submit.css">
         </head>
         <body>
+            <!--form allows users to post messages to a form that will be updated in the messages db-->
             <?php session_start(); ?>
             <div>
                 <strong>Send users messages to get to know them better!</strong>

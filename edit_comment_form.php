@@ -8,6 +8,7 @@
             <div>
                 <strong>Edit your comment</strong>
             </div>
+            <!--form to submit coments, users get a textbox to view their comments-->
                 <form action="edit_comment.php" method="POST"> 
                         
                     <textarea class="text_box" name="comment_submit" >Enter your insightful comment </textarea>

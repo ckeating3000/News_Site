@@ -15,20 +15,23 @@
                      <input type="submit" value="Home"/>
                 </form>
             </nav>
-            <!--sidebar of options-->
         
             <?php
+			//converted this page into separate pages because there were bugs with the comments and posts di
+			//displaying together
 		    session_start();
+			//make sure user is logged in
 		    if(!isset($_SESSION['Login'])){
 			    header("Location: home_page_nologin.php");
 			    exit;
 		    }
+			//get username
 			$username = $_SESSION['Login'];
             require 'database_rw.php';
 		    echo "<br>\n<br>\n";
 		   
         //DISPLAY/DELETE COMMENTS
-	echo "Your comments";
+			echo "Your comments";
             $get_comments = $mysqli->prepare("select comment, story_id, username, comment_id from comments where username=? order by story_id");
             if(!$get_comments){
                 printf("Query Prep Failed: %s\n", $mysqli->error);
@@ -39,7 +42,7 @@
             $get_comments->bind_result($comment, $story_id, $username, $comment_id);
             
             echo "<ul>\n";
-
+			//list comments with delete button 
             while($get_comments->fetch()){
                 printf("\t<li> %s <br>
                        <a href='delete_comment.php?name=%s&story=%s'>delete this comment</a>

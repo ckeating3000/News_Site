@@ -15,7 +15,6 @@
 				</form>
 				
             </nav>
-            <!--sidebar of options-->
         
                <?php
 			   session_start();
@@ -34,6 +33,7 @@
                     printf("Query Prep Failed: %s\n", $mysqli->error);
                     exit;
                 }
+				
                 $get_story->bind_param('i', $story_id);
                 $get_story->execute();
                 $get_story->bind_result($link, $text, $username, $title);
@@ -47,7 +47,7 @@
                       );
                 $get_story->close();
                  
-                //display a list of comments
+                //display a list of who liked the post...string of text from the stories database
                 
                 $get_likes = $mysqli->prepare("select likers from stories where story_id=?");
                 if(!$get_likes){

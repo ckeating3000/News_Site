@@ -30,6 +30,7 @@
                     printf("Query Prep Failed: %s\n", $mysqli->error);
                     exit;
                 }
+				//display the story so user can remember what they are commenting on
                 $get_stories->bind_param('i', $story_id1);
                 $get_stories->execute();
                 $get_stories->bind_result($text, $username, $title);
@@ -44,7 +45,7 @@
                     echo "</ul>\n";
                 $get_stories->close();
             ?>
-
+<!--form to submit comments in-->
             <p>Post your comments below</p>
 
             <form name="CommentSubmit" action="comment_submit.php" id=text_form method="POST">

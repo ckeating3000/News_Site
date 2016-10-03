@@ -42,7 +42,7 @@
                       );
                 $get_story->close();
                  
-                //display a list of comments
+                //display a list of comments with limited actions...can't comment back
                 
                 $get_stories = $mysqli->prepare("select username, comment, story_id from comments where story_id=?");
                 if(!$get_stories){

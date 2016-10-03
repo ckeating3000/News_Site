@@ -47,10 +47,10 @@
 				</form>
 
             </nav>
-            <!--sidebar of options-->
         
             <?php
 			    session_start();
+				//if not logged in, revert to other homepage
 			    if(!isset($_SESSION['Login'])){
 				    Header("Location: home_page_nologin.php");
 				    exit;
@@ -72,6 +72,7 @@
                 $get_stories->bind_result($link, $text, $username, $title, $id, $comcount, $num_likes);
                  
                 echo "<ul>\n";
+				//links allow users to view the likes and comments of each post as well as post their own
                 while($get_stories->fetch()){
                     printf("\t<li> <a href='%s'>%s</a> <br> %s <br> Posted by: 
 						   <a href='view_user_other.php?name=%s'>%s</a> <br>
@@ -93,10 +94,6 @@
 						htmlentities($id),
 						htmlentities($id)
                     );
-					//allow the person to delete posts that are their own
-					//if($username==$_SESSION["Login"]){
-					//	echo "<a href='delete.php?name=$title'>Delete this Post</a>";
-					//}
                 }
                 echo "</ul>\n";
                 

@@ -9,6 +9,7 @@ $like=$mysqli->prepare("update stories set num_likes=num_likes +1 where story_id
 $like->bind_param('i', $story_id);
 $like->execute();
 $like->close();
+//update liker string
 $liker_string = " ".$liker."\r\n";
 //add new user to the list of likers
 //adapted from http://stackoverflow.com/questions/19081743/how-can-i-add-text-to-sql-column
