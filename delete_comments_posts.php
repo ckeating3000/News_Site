@@ -60,7 +60,6 @@
             $get_posts->close();
 
         //DISPLAY/DELETE COMMENTS
-
             $get_comments = $mysqli->prepare("select comment, story_id, username, comment_id from comments where username=? order by story_id");
             if(!$get_comments){
                 printf("Query Prep Failed: %s\n", $mysqli->error);
@@ -74,10 +73,11 @@
 
             while($get_comments->fetch()){
                 printf("\t<li> %s <br>
-                       <a href='delete_comment.php?name=%s'>delete this comment</a>
+                       <a href='delete_comment.php?name=%s&story=%s'>delete this comment</a>
                        </li><br>\n",
                     htmlspecialchars($comment),
-                    htmlspecialchars($comment_id)
+                    htmlspecialchars($comment_id),
+                    htmlspecialchars($story_id)
                 );
             }
             echo "</ul>\n";

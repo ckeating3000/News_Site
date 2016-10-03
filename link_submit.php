@@ -43,6 +43,7 @@
 		$stmt->close();
 		//redirect to homepage
 		header("Location: home_page_login.php");
+		exit;
 	}
 	
 ?>

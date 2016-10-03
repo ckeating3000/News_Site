@@ -52,6 +52,6 @@
 ");
     
 //reroute to home page once working 
-    //header("Location: home_page_login.php");
-	//exit;
+    header("Location: home_page_login.php");
+	exit;
 	

@@ -5,22 +5,33 @@
 	require 'database_rw.php';
 
 	$id = $_GET["name"];
+	$story_id = $_GET["story"];
 
-	// adapted from http://www.w3schools.com/php/php_mysql_delete.asp
+	//delete comment with specified comment_id
+	$stmt = $mysqli->prepare("delete from comments where comment_id=?");
+	if(!$stmt){
+		printf("Query Prep Failed: %s\n", $mysqli->error);
+		 //redirect to error page
+		header("Location: link_upload_error.html");
+		exit;
+	}
+	$stmt->bind_param('s', $id);
+	$stmt->execute();
+	$stmt->close();
 
-	//first delete all comments associated with that article
-	$delete_comments = "delete from comments where comment_id='$id'";
-	$mysqli->query("
-    UPDATE stories
-    SET comment_count = comment_count - 1
-    WHERE story_id = '".$story_id."'
-	");
-	if ($mysqli->query($delete_comments) === TRUE) {
-		header("Location: delete_comments_posts.php");
-			//decrease the comment count in the stories table, from http://stackoverflow.com/questions/2259155/increment-value-in-mysql-update-query
+	//decrease the comment count in the stories table, from http://stackoverflow.com/questions/2259155/increment-value-in-mysql-update-query
+	$stmt = $mysqli->prepare("UPDATE stories SET comment_count = comment_count - 1 WHERE story_id =?");
+	if(!$stmt){
+		printf("Query Prep Failed: %s\n", $mysqli->error);
+		 //redirect to error page
+		header("Location: link_upload_error.html");
+		exit;
+	}
+	$stmt->bind_param('s', $story_id);
+	$stmt->execute();
+	$stmt->close();
+
+	header("Location: delete_comments_posts.php");
+	exit;
 	
-	}
-	else {
-		echo "Error deleting comments:";
-	}
 ?>
